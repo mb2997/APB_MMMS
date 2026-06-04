@@ -8,7 +8,7 @@ class apb_env_config extends uvm_object;
     // --------------------------------------------------------
     // Fields
     // --------------------------------------------------------
-    int unsigned      no_of_slaves;    // ✅ unsigned — can never be negative
+    int unsigned      no_of_slaves;    //  unsigned — can never be negative
     apb_master_config config_hm;       // master agent config
     apb_slave_config  config_hs[];     // one per slave — sized at test level
 
@@ -20,7 +20,7 @@ class apb_env_config extends uvm_object;
         `uvm_field_object      (config_hm,    UVM_ALL_ON)
         `uvm_field_array_object(config_hs,    UVM_ALL_ON)
     `uvm_object_utils_end
-    
+
     function new(string name = "apb_env_config");
         super.new(name);
     endfunction

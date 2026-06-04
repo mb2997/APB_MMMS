@@ -11,21 +11,21 @@ class apb_slave_trans extends uvm_sequence_item;
     // --------------------------------------------------------
     // APB signals — sampled [captured] by monitor from interface
     // --------------------------------------------------------
-    bit [`ADDR_WIDTH-1:0]  PADDR;
-    bit [`DATA_WIDTH-1:0]  PWDATA;
-    bit [`DATA_WIDTH-1:0]  PRDATA;
-    bit [`STRB_WIDTH-1:0]  PSTRB;     //  added — byte lane enables
-    bit                    PWRITE;
-    bit                    PENABLE;
-    bit                    PREADY;    //  default 0 — driver controls this
-    bit                    PSLVERR;   //  added — slave error response
-    bit                    PSEL[];    //  added — which slave selected
+    bit [`ADDR_WIDTH-1:0] PADDR;
+    bit [`DATA_WIDTH-1:0] PWDATA;
+    bit [`DATA_WIDTH-1:0] PRDATA;
+    bit [`STRB_WIDTH-1:0] PSTRB;     //  added — byte lane enables
+    bit PWRITE;
+    bit PENABLE;
+    bit PREADY;    //  default 0 — driver controls this
+    bit PSLVERR;   //  added — slave error response
+    bit PSEL[];    //  added — which slave selected
 
     // --------------------------------------------------------
     // Randomized slave behaviour fields
     // --------------------------------------------------------
-    rand int unsigned  no_of_wait_cycles;   // how many cycles PREADY stays low
-    rand bit           wait_enable;         // 0=respond immediately, 1=insert waits
+    rand int unsigned no_of_wait_cycles;   // how many cycles PREADY stays low
+    rand bit wait_enable;         // 0=respond immediately, 1=insert waits
 
     // --------------------------------------------------------
     // Constraints

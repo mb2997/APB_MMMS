@@ -6,11 +6,8 @@ class apb_slave_drv extends uvm_driver #(apb_slave_trans);
     `uvm_component_utils(apb_slave_drv)
 
     // Interface and config handles
-    virtual apb_inf      vif;
+    virtual apb_inf vif;
     apb_slave_config     config_hs;
-
-    // Memory model — stores data written by master
-    bit [`DATA_WIDTH-1:0] mem_model[int];   // key=address, value=data
 
     function new(string name = "apb_slave_drv", uvm_component parent = null);
         super.new(name, parent);
@@ -126,28 +123,26 @@ class apb_slave_drv extends uvm_driver #(apb_slave_trans);
             end
         end
 
+        vif.slv_drv_cb.PREADY  <= 1'b1;
+
         // ----------------------------------------
         // WRITE transfer
         // ----------------------------------------
         if(vif.slv_drv_cb.PWRITE == 1'b1) begin
 
             // Write each valid byte lane [only where PSTRB is set]
-            for(int b = 0; b < `DATA_WIDTH/8; b++) begin
-                if(vif.slv_drv_cb.PSTRB[b]) begin
-                    mem_model[vif.slv_drv_cb.PADDR][(b*8)+:8] =
-                        vif.slv_drv_cb.PWDATA[(b*8)+:8];
+            // for(int b = 0; b < `DATA_WIDTH/8; b++)
+            foreach(vif.slv_drv_cb.PSTRB[b])
+            begin
+                if(vif.slv_drv_cb.PSTRB[b]) 
+                begin
+                    config_hs.mem_model[vif.slv_drv_cb.PADDR][b*8 +: 8] = vif.slv_drv_cb.PWDATA[b*8 +: 8];
                 end
             end
 
-            `uvm_info(get_type_name(),
-                $sformatf("WRITE | ADDR=0x%0h | DATA=0x%0h | STRB=0x%0h",
-                           vif.slv_drv_cb.PADDR,
-                           mem_model[vif.slv_drv_cb.PADDR],
-                           vif.slv_drv_cb.PSTRB),
-                UVM_MEDIUM)
+            `uvm_info(get_type_name(), $sformatf("WRITE | ADDR=0x%0h | DATA=0x%0h | STRB=0x%0h", vif.slv_drv_cb.PADDR, config_hs.mem_model[vif.slv_drv_cb.PADDR], vif.slv_drv_cb.PSTRB), UVM_MEDIUM)
 
             // Assert PREADY — write complete
-            vif.slv_drv_cb.PREADY  <= 1'b1;
             vif.slv_drv_cb.PSLVERR <= 1'b0;
             @(vif.slv_drv_cb);
 
@@ -159,24 +154,15 @@ class apb_slave_drv extends uvm_driver #(apb_slave_trans);
         else begin
 
             // Check if address exists in memory
-            if(mem_model.exists(vif.slv_drv_cb.PADDR)) begin
-                vif.slv_drv_cb.PRDATA <= mem_model[vif.slv_drv_cb.PADDR];
+            if(config_hs.mem_model.exists(vif.slv_drv_cb.PADDR)) begin
+                vif.slv_drv_cb.PRDATA <= config_hs.mem_model[vif.slv_drv_cb.PADDR];
                 vif.slv_drv_cb.PSLVERR <= 1'b0;
-
-                `uvm_info(get_type_name(),
-                    $sformatf("READ  | ADDR=0x%0h | DATA=0x%0h",
-                               vif.slv_drv_cb.PADDR,
-                               mem_model[vif.slv_drv_cb.PADDR]),
-                    UVM_MEDIUM)
+                `uvm_info(get_type_name(), $sformatf("READ  | ADDR=0x%0h | DATA=0x%0h", vif.slv_drv_cb.PADDR, config_hs.mem_model[vif.slv_drv_cb.PADDR]), UVM_MEDIUM)
             end
             else begin
                 // Address never written — return 0 and flag error
                 vif.slv_drv_cb.PRDATA  <= '0;
-                vif.slv_drv_cb.PSLVERR <= 1'b1;   // signal error to master
-
-                `uvm_warning(get_type_name(),
-                    $sformatf("READ  | ADDR=0x%0h not in mem_model — returning 0, asserting PSLVERR",
-                               vif.slv_drv_cb.PADDR))
+                `uvm_info(get_type_name(), $sformatf("READ_ERROR | ADDR=0x%0h not in mem_model — returning 0, asserting PSLVERR", vif.slv_drv_cb.PADDR), UVM_MEDIUM)
             end
 
             // Assert PREADY — read data valid on bus
@@ -190,23 +176,6 @@ class apb_slave_drv extends uvm_driver #(apb_slave_trans);
         vif.slv_drv_cb.PSLVERR <= 1'b0;
 
     endtask
-
-    // ----------------------------------------------------------------
-    // report_phase — print final memory contents
-    // ----------------------------------------------------------------
-    function void report_phase(uvm_phase phase);
-        super.report_phase(phase);
-        if(config_hs.slave_id == 0) begin   // only slave 0 prints — avoids [prevents] duplicate reports
-            `uvm_info(get_type_name(),
-                $sformatf("=== SLAVE-%0d FINAL MEMORY CONTENTS ===",
-                           config_hs.slave_id),
-                UVM_NONE)
-            foreach(mem_model[addr])
-                `uvm_info(get_type_name(),
-                    $sformatf("  mem[0x%0h] = 0x%0h", addr, mem_model[addr]),
-                    UVM_NONE)
-        end
-    endfunction
 
 endclass : apb_slave_drv
 

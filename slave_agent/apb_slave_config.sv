@@ -6,7 +6,7 @@ class apb_slave_config extends uvm_object;
     // --------------------------------------------------------
     // Slave identity [which slave this config belongs to]
     // --------------------------------------------------------
-    int unsigned slave_id;   // ✅ matches PSEL[slave_id] in driver
+    int unsigned slave_id;   //  matches PSEL[slave_id] in driver
 
     // --------------------------------------------------------
     // Address range — set by test/env
@@ -24,6 +24,10 @@ class apb_slave_config extends uvm_object;
     // --------------------------------------------------------
     int unsigned no_of_wait_cycles  = 0;     // default = zero wait [responds immediately]
     bit          has_error_response = 1'b0;  // default = no error [normal operation]
+
+    // Memory model
+    bit [`DATA_WIDTH-1:0] mem_model[int];   // key=address, value=data
+
 
     // --------------------------------------------------------
     // Factory registration with field automation

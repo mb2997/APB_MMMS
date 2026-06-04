@@ -183,7 +183,7 @@ class apb_master_drv extends uvm_driver #(apb_master_trans);
                 end
             end
 
-        join_none
+        join_any
 
         $display("------ Execution Done Run-Phase in Master Driver -------");
     endtask
@@ -238,9 +238,7 @@ class apb_master_drv extends uvm_driver #(apb_master_trans);
             end
             begin : pready_timeout
                 repeat(`PREADY_MAX_WAIT) @(vif.mas_drv_cb);
-                `uvm_warning("TIMEOUT_WARNING",
-                    $sformatf("[%s] PREADY not asserted within %0d cycles",
-                               trans, `PREADY_MAX_WAIT))
+                `uvm_warning("TIMEOUT_WARNING", $sformatf("[%s] PREADY not asserted within %0d cycles", trans, `PREADY_MAX_WAIT))
             end
         join_any
         disable F_PREADY;

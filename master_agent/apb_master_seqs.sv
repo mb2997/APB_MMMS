@@ -31,10 +31,7 @@ class apb_master_seqs extends uvm_sequence #(apb_master_trans);
             finish_item(trans_hm);
 
             `uvm_info(get_type_name(),
-                $sformatf("Transaction-%0d sent from MASTER SEQS =\n%s",
-                           apb_master_trans::current_trans_m,
-                           trans_hm.sprint()),
-                UVM_MEDIUM)
+            $sformatf("Transaction-%0d sent from MASTER SEQS =\n%s", apb_master_trans::current_trans_m, trans_hm.sprint()), UVM_MEDIUM)
 
             //  increment after finish_item — transaction is done [fully sent]
             apb_master_trans::current_trans_m++;

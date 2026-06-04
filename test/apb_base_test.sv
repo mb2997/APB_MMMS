@@ -27,7 +27,7 @@ class apb_base_test extends uvm_test;
         config_ht.config_he.config_hm.no_of_slaves = config_ht.no_of_slaves;
 
         config_ht.config_he.config_hs = new[config_ht.no_of_slaves];
-        seqs_hs                        = new[config_ht.no_of_slaves];
+        seqs_hs                       = new[config_ht.no_of_slaves];
 
         foreach (config_ht.config_he.config_hs[i])
             config_ht.config_he.config_hs[i] =
@@ -42,8 +42,7 @@ class apb_base_test extends uvm_test;
             config_ht.config_he.config_hs[i].is_active  = UVM_ACTIVE;
         end
 
-        uvm_config_db #(apb_env_config)::set(
-            this, "*", "apb_env_config", config_ht.config_he);
+        uvm_config_db #(apb_env_config)::set(this, "*", "apb_env_config", config_ht.config_he);
     endfunction
 
     // --------------------------------------------------------
@@ -71,48 +70,36 @@ class apb_base_test extends uvm_test;
 
     // --------------------------------------------------------
     // run_phase
-    // Slave sequences run in the background (reactive, forever).
-    // Master sequence runs in the foreground — when it finishes,
-    // all slave threads are killed and the objection is dropped.
     // --------------------------------------------------------
     task run_phase(uvm_phase phase);
-        // ✅ process handle array — one slot per slave
-        process slave_procs[];
-        slave_procs = new[config_ht.no_of_slaves];
 
         phase.raise_objection(this);
 
-        // ✅ Step 1 — spawn all ACTIVE slave sequences in the background
-        foreach (env_h.agent_hs[i]) begin
-            automatic int ai = i;
-            if (config_ht.config_he.config_hs[ai].is_active == UVM_ACTIVE) begin
-                fork
-                    begin
-                        // capture handle INSIDE the thread so it is always valid
-                        slave_procs[ai] = process::self();
-                        seqs_hs[ai].start(env_h.agent_hs[ai].seqr_hs);
+        fork
+            begin
+                //  Step 1 — spawn all ACTIVE slave sequences in the background
+                foreach (env_h.agent_hs[i]) begin
+                    automatic int ai = i;
+                    if (config_ht.config_he.config_hs[ai].is_active == UVM_ACTIVE) begin
+                        fork
+                            begin
+                                // capture handle INSIDE the thread so it is always valid
+                                // slave_procs[ai] = process::self();
+                                seqs_hs[ai].start(env_h.agent_hs[ai].seqr_hs);
+                            end
+                        join_none
                     end
-                join_none
+                end
             end
-        end
 
-        // ✅ Step 2 — run master in the foreground; blocks until all
-        //             master transactions are done
-        seqs_hm.start(env_h.agent_hm.seqr_hm);
-        `uvm_info(get_type_name(), "Master sequence complete — stopping simulation", UVM_MEDIUM)
-
-        // ✅ Step 3 — master is done; kill every slave thread that is
-        //             still running so the simulation does not hang
-        foreach (slave_procs[i]) begin
-            if (slave_procs[i] != null &&
-                slave_procs[i].status() != process::FINISHED) begin
-                slave_procs[i].kill();
-                `uvm_info(get_type_name(),
-                    $sformatf("Slave-%0d sequence killed", i), UVM_MEDIUM)
+            begin
+                //  Step 2 — run master in the foreground; blocks until all
+                seqs_hm.start(env_h.agent_hm.seqr_hm);
+                `uvm_info(get_type_name(), "Master sequence complete — stopping simulation", UVM_MEDIUM)
             end
-        end
+        join
 
-        // ✅ Step 4 — drop objection — simulation ends cleanly
+        //  Step 3 — drop objection — simulation ends cleanly
         phase.drop_objection(this);
         `uvm_info(get_type_name(), "Objection dropped — run phase complete", UVM_MEDIUM)
     endtask

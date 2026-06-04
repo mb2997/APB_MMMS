@@ -41,7 +41,6 @@ class apb_master_mon extends uvm_monitor;
         begin
             data_from_inf();
             `uvm_info(get_type_name(),$sformatf("Data Received at MASTER-MONITOR from SLAVE-DRIVER = \n%s",trans_hm.sprint()),UVM_MEDIUM)
-            //send_to_sb();
         end
 
     endtask
@@ -79,7 +78,7 @@ class apb_master_mon extends uvm_monitor;
 
     function void report_phase(uvm_phase  phase);
         super.report_phase(phase);
-        `uvm_info(get_full_name(),$sformatf("num_of_packets_sampled %d",no_of_pkt_sampled),UVM_MEDIUM)
+        `uvm_info(get_type_name(),$sformatf("num_of_packets_sampled = %0d",no_of_pkt_sampled),UVM_MEDIUM)
     endfunction
 
 endclass : apb_master_mon
