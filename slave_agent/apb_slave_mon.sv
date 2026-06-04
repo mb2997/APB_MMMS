@@ -126,14 +126,10 @@ class apb_slave_mon extends uvm_monitor;
         // Log and send to scoreboard
         if(trans_hs.PWRITE == 1'b1)
             `uvm_info(get_type_name(),
-                $sformatf("Slave-%0d WRITE sampled =\n%s",
-                           config_hs.slave_id, trans_hs.sprint()),   // ✅ %s not %p
-                UVM_MEDIUM)
+                $sformatf("Slave-%0d WRITE sampled =\n%s", config_hs.slave_id, trans_hs.sprint()), UVM_MEDIUM)
         else
             `uvm_info(get_type_name(),
-                $sformatf("Slave-%0d READ  sampled =\n%s",
-                           config_hs.slave_id, trans_hs.sprint()),
-                UVM_MEDIUM)
+                $sformatf("Slave-%0d READ  sampled =\n%s", config_hs.slave_id, trans_hs.sprint()), UVM_MEDIUM)
 
         // Update memory model
         populate_mem_model();

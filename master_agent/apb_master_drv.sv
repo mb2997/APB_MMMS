@@ -245,25 +245,8 @@ class apb_master_drv extends uvm_driver #(apb_master_trans);
         join_any
         disable F_PREADY;
 
-        // Capture PRDATA on READ transfers
-        if(req.PWRITE == 1'b0) begin
-            req.PRDATA = vif.mas_drv_cb.PRDATA;
-            `uvm_info(get_type_name(),
-                $sformatf("[%s] READ complete — PRDATA=0x%0h", trans, req.PRDATA),
-                UVM_MEDIUM)
-        end
-
-        // --------------------------------------------------------
-        // CLEANUP PHASE — deassert PSEL, PENABLE, idle data lines
-        // --------------------------------------------------------
-        foreach(req.PSEL[i])
-            vif.mas_drv_cb.PSEL[i] <= 1'b0;
+        // Deasserting PENABLE after each transaction as per apb fsm
         vif.mas_drv_cb.PENABLE <= 1'b0;
-        vif.mas_drv_cb.PWDATA  <= '0;
-        vif.mas_drv_cb.PSTRB   <= '0;
-
-        // One idle cycle between back-to-back transfers — APB protocol requirement
-        // @(vif.mas_drv_cb);
 
     endtask
 
