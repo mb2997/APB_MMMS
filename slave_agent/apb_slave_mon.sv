@@ -101,7 +101,7 @@ class apb_slave_mon extends uvm_monitor;
 
         // Broadcast [send out] to scoreboard
         slv_mon_ap.write(trans_hs);
-        `uvm_info(get_type_name(), $sformatf("Slave-%0d transaction sent to scoreboard = \n%s", config_hs.slave_id, trans_hs.sprint()), UVM_NONE)
+        `uvm_info(get_type_name(), $sformatf("Slave-%0d transaction sent to scoreboard = \n%s", config_hs.slave_id, trans_hs.sprint()), UVM_MEDIUM)
 
         num_of_slv_packets_sampled++;
 
@@ -110,7 +110,7 @@ class apb_slave_mon extends uvm_monitor;
     function void final_phase(uvm_phase phase);
 
         foreach(config_hs.mem_model[i])
-            `uvm_info(get_type_name(), $sformatf("mem_model[%0d] = 0x%x", i, config_hs.mem_model[i]), UVM_NONE)
+            `uvm_info(get_type_name(), $sformatf("mem_model[%0d] = 0x%x", i, config_hs.mem_model[i]), UVM_MEDIUM)
 
     endfunction
 

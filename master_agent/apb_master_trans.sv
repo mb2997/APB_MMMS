@@ -65,7 +65,7 @@ class apb_master_trans extends uvm_sequence_item;
 
     // Read/write distribution
     constraint c_pwrite {
-        PWRITE dist {1 := 60, 0 := 40};
+        PWRITE dist {1 := 50, 0 := 50};
     }
 
     // PWDATA must be 0 on reads — no point [no meaning] driving data during a read

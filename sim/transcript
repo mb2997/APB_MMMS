@@ -1,6 +1,6 @@
-# vsim -vopt apb_top -c -do "run -all; exit" "+UVM_VERBOSITY=UVM_NONE" 
-# Start time: 14:47:36 on Jun 05,2026
-# ** Note: (vsim-3812) Design is being optimized...
+# vsim -vopt apb_top -c -do "run -all; exit" 
+# Start time: 15:45:48 on Jun 05,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # //  Questa Sim-64
 # //  Version 10.7c win64 Aug 18 2018
 # //
@@ -46,7 +46,33 @@
 # 
 #       (Specify +UVM_NO_RELNOTES to turn off this notice)
 # 
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(215) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(216) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
+# UVM_INFO @ 0: reporter [RNTST] Running test apb_base_test...
+# UVM_INFO ../test/apb_base_test.sv(59) @ 0: uvm_test_top [apb_base_test] Build-Phase complete in Test
+# UVM_INFO ../env/apb_env.sv(58) @ 0: uvm_test_top.env_h [apb_env] ENV built | slaves=3
+# UVM_INFO ../master_agent/apb_master_agent.sv(23) @ 0: uvm_test_top.env_h.agent_hm [apb_master_agent] Executing Build-Phase in Master Agent
+# UVM_INFO ../master_agent/apb_master_agent.sv(39) @ 0: uvm_test_top.env_h.agent_hm [apb_master_agent] Build-Phase Complete in Master Agent
 # ------ Execution Done Build-Phase in Master Driver -------
+# UVM_INFO ../slave_agent/apb_slave_agent.sv(25) @ 0: uvm_test_top.env_h.agent_hs_0 [apb_slave_agent] Executing Build-Phase in Slave Agent
+# UVM_INFO ../slave_agent/apb_slave_agent.sv(41) @ 0: uvm_test_top.env_h.agent_hs_0 [apb_slave_agent] Build-Phase Complete in Slave Agent
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(30) @ 0: uvm_test_top.env_h.agent_hs_0.drv_hs [apb_slave_drv] Build-Phase Complete in Slave Driver
+# UVM_INFO ../slave_agent/apb_slave_agent.sv(25) @ 0: uvm_test_top.env_h.agent_hs_1 [apb_slave_agent] Executing Build-Phase in Slave Agent
+# UVM_INFO ../slave_agent/apb_slave_agent.sv(41) @ 0: uvm_test_top.env_h.agent_hs_1 [apb_slave_agent] Build-Phase Complete in Slave Agent
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(30) @ 0: uvm_test_top.env_h.agent_hs_1.drv_hs [apb_slave_drv] Build-Phase Complete in Slave Driver
+# UVM_INFO ../slave_agent/apb_slave_agent.sv(25) @ 0: uvm_test_top.env_h.agent_hs_2 [apb_slave_agent] Executing Build-Phase in Slave Agent
+# UVM_INFO ../slave_agent/apb_slave_agent.sv(41) @ 0: uvm_test_top.env_h.agent_hs_2 [apb_slave_agent] Build-Phase Complete in Slave Agent
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(30) @ 0: uvm_test_top.env_h.agent_hs_2.drv_hs [apb_slave_drv] Build-Phase Complete in Slave Driver
+# UVM_INFO ../master_agent/apb_master_agent.sv(47) @ 0: uvm_test_top.env_h.agent_hm [apb_master_agent] Executing Connect-Phase in Master Agent
+# UVM_INFO ../master_agent/apb_master_agent.sv(53) @ 0: uvm_test_top.env_h.agent_hm [apb_master_agent] Connect-Phase Complete in Master Agent
+# UVM_INFO ../slave_agent/apb_slave_agent.sv(49) @ 0: uvm_test_top.env_h.agent_hs_0 [apb_slave_agent] Executing Connect-Phase in Slave Agent
+# UVM_INFO ../slave_agent/apb_slave_agent.sv(55) @ 0: uvm_test_top.env_h.agent_hs_0 [apb_slave_agent] Connect-Phase Complete in Slave Agent
+# UVM_INFO ../slave_agent/apb_slave_agent.sv(49) @ 0: uvm_test_top.env_h.agent_hs_1 [apb_slave_agent] Executing Connect-Phase in Slave Agent
+# UVM_INFO ../slave_agent/apb_slave_agent.sv(55) @ 0: uvm_test_top.env_h.agent_hs_1 [apb_slave_agent] Connect-Phase Complete in Slave Agent
+# UVM_INFO ../slave_agent/apb_slave_agent.sv(49) @ 0: uvm_test_top.env_h.agent_hs_2 [apb_slave_agent] Executing Connect-Phase in Slave Agent
+# UVM_INFO ../slave_agent/apb_slave_agent.sv(55) @ 0: uvm_test_top.env_h.agent_hs_2 [apb_slave_agent] Connect-Phase Complete in Slave Agent
+# UVM_INFO ../env/apb_env.sv(75) @ 0: uvm_test_top.env_h [apb_env] Connect-Phase complete in ENV
+# UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
 # ------------------------------------------------------------------
 # Name                       Type                        Size  Value
 # ------------------------------------------------------------------
@@ -131,11 +157,124 @@
 #         put_export         uvm_put_imp                 -     @1374
 # ------------------------------------------------------------------
 # 
+# UVM_INFO ../test/apb_base_test.sv(68) @ 0: uvm_test_top [apb_base_test] End-of-Elaboration complete in Test
 # UVM_INFO ../slave_agent/apb_slave_config.sv(52) @ 0: reporter [apb_slave_config] Slave-0 | Range: 0x0–0x54 | is_active=UVM_ACTIVE | wait=0
 # UVM_INFO ../slave_agent/apb_slave_config.sv(52) @ 0: reporter [apb_slave_config] Slave-1 | Range: 0x55–0xa9 | is_active=UVM_ACTIVE | wait=0
 # UVM_INFO ../slave_agent/apb_slave_config.sv(52) @ 0: reporter [apb_slave_config] Slave-2 | Range: 0xaa–0xfe | is_active=UVM_ACTIVE | wait=0
 # 
 # ---------- Master Transaction : 1 ----------
+# 
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(58) @ 50: uvm_test_top.env_h.agent_hs_0.drv_hs [apb_slave_drv] Transaction received at SLAVE-DRIVER =
+# -----------------------------------------------------------------------------------------------------
+# Name                           Type             Size  Value                                          
+# -----------------------------------------------------------------------------------------------------
+# trans_hs                       apb_slave_trans  -     @1438                                          
+#   PADDR                        integral         8     'h0                                            
+#   PWDATA                       integral         32    'h0                                            
+#   PRDATA                       integral         32    'h0                                            
+#   PSTRB                        integral         4     'h0                                            
+#   PWRITE                       integral         1     'h0                                            
+#   PENABLE                      integral         1     'h0                                            
+#   PREADY                       integral         1     'h0                                            
+#   PSLVERR                      integral         1     'h0                                            
+#   PSEL                         da(integral)     0     -                                              
+#   no_of_wait_cycles            integral         32    'd1                                            
+#   wait_enable                  integral         1     1                                              
+#   begin_time                   time             64    50                                             
+#   depth                        int              32    'd2                                            
+#   parent sequence (name)       string           9     seqs_hs_0                                      
+#   parent sequence (full name)  string           47    uvm_test_top.env_h.agent_hs_0.seqr_hs.seqs_hs_0
+#   sequencer                    string           37    uvm_test_top.env_h.agent_hs_0.seqr_hs          
+# -----------------------------------------------------------------------------------------------------
+# 
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(58) @ 50: uvm_test_top.env_h.agent_hs_1.drv_hs [apb_slave_drv] Transaction received at SLAVE-DRIVER =
+# -----------------------------------------------------------------------------------------------------
+# Name                           Type             Size  Value                                          
+# -----------------------------------------------------------------------------------------------------
+# trans_hs                       apb_slave_trans  -     @1434                                          
+#   PADDR                        integral         8     'h0                                            
+#   PWDATA                       integral         32    'h0                                            
+#   PRDATA                       integral         32    'h0                                            
+#   PSTRB                        integral         4     'h0                                            
+#   PWRITE                       integral         1     'h0                                            
+#   PENABLE                      integral         1     'h0                                            
+#   PREADY                       integral         1     'h0                                            
+#   PSLVERR                      integral         1     'h0                                            
+#   PSEL                         da(integral)     0     -                                              
+#   no_of_wait_cycles            integral         32    'd0                                            
+#   wait_enable                  integral         1     'd0                                            
+#   begin_time                   time             64    50                                             
+#   depth                        int              32    'd2                                            
+#   parent sequence (name)       string           9     seqs_hs_1                                      
+#   parent sequence (full name)  string           47    uvm_test_top.env_h.agent_hs_1.seqr_hs.seqs_hs_1
+#   sequencer                    string           37    uvm_test_top.env_h.agent_hs_1.seqr_hs          
+# -----------------------------------------------------------------------------------------------------
+# 
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(58) @ 50: uvm_test_top.env_h.agent_hs_2.drv_hs [apb_slave_drv] Transaction received at SLAVE-DRIVER =
+# -----------------------------------------------------------------------------------------------------
+# Name                           Type             Size  Value                                          
+# -----------------------------------------------------------------------------------------------------
+# trans_hs                       apb_slave_trans  -     @1430                                          
+#   PADDR                        integral         8     'h0                                            
+#   PWDATA                       integral         32    'h0                                            
+#   PRDATA                       integral         32    'h0                                            
+#   PSTRB                        integral         4     'h0                                            
+#   PWRITE                       integral         1     'h0                                            
+#   PENABLE                      integral         1     'h0                                            
+#   PREADY                       integral         1     'h0                                            
+#   PSLVERR                      integral         1     'h0                                            
+#   PSEL                         da(integral)     0     -                                              
+#   no_of_wait_cycles            integral         32    'd0                                            
+#   wait_enable                  integral         1     'd0                                            
+#   begin_time                   time             64    50                                             
+#   depth                        int              32    'd2                                            
+#   parent sequence (name)       string           9     seqs_hs_2                                      
+#   parent sequence (full name)  string           47    uvm_test_top.env_h.agent_hs_2.seqr_hs.seqs_hs_2
+#   sequencer                    string           37    uvm_test_top.env_h.agent_hs_2.seqr_hs          
+# -----------------------------------------------------------------------------------------------------
+# 
+# UVM_INFO ../master_agent/apb_master_drv.sv(151) @ 50: uvm_test_top.env_h.agent_hm.drv_hm [apb_master_drv] [MASTER-TRANS-1] Data Received at MASTER-DRIVER =
+# --------------------------------------------------------------------------------------------------
+# Name                           Type              Size  Value                                      
+# --------------------------------------------------------------------------------------------------
+# trans_hm                       apb_master_trans  -     @1442                                      
+#   PWRITE                       integral          1     'h1                                        
+#   PADDR                        integral          8     'h0                                        
+#   PWDATA                       integral          32    'heb203ca4                                 
+#   PSTRB                        integral          4     'hf                                        
+#   PENABLE                      integral          1     'h0                                        
+#   PSEL                         da(integral)      0     -                                          
+#   trans_size                   transfer_size_e   2     WORD                                       
+#   PREADY                       integral          1     'h0                                        
+#   PRDATA                       integral          32    'h0                                        
+#   PSLVERR                      integral          1     'h0                                        
+#   begin_time                   time              64    50                                         
+#   depth                        int               32    'd2                                        
+#   parent sequence (name)       string            7     seqs_hm                                    
+#   parent sequence (full name)  string            43    uvm_test_top.env_h.agent_hm.seqr_hm.seqs_hm
+#   sequencer                    string            35    uvm_test_top.env_h.agent_hm.seqr_hm        
+#   Direction                    string            5     WRITE                                      
+#   Trans Size                   string            4     WORD                                       
+# --------------------------------------------------------------------------------------------------
+# 
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(122) @ 110: uvm_test_top.env_h.agent_hs_0.drv_hs [apb_slave_drv] WRITE | ADDR=0x0 | DATA=0xeb203ca4 | STRB=0xf
+# UVM_INFO ../slave_agent/apb_slave_mon.sv(95) @ 130: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 WRITE sampled =
+# ------------------------------------------------------
+# Name                 Type             Size  Value     
+# ------------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1542     
+#   PADDR              integral         8     'h0       
+#   PWDATA             integral         32    'heb203ca4
+#   PRDATA             integral         32    'h0       
+#   PSTRB              integral         4     'hf       
+#   PWRITE             integral         1     'h1       
+#   PENABLE            integral         1     'h1       
+#   PREADY             integral         1     'h1       
+#   PSLVERR            integral         1     'h0       
+#   PSEL               da(integral)     0     -         
+#   no_of_wait_cycles  integral         32    'd0       
+#   wait_enable        integral         1     'd0       
+# ------------------------------------------------------
 # 
 # UVM_INFO ../slave_agent/apb_slave_mon.sv(104) @ 130: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard = 
 # ------------------------------------------------------
@@ -155,7 +294,57 @@
 #   wait_enable        integral         1     'd0       
 # ------------------------------------------------------
 # 
-# UVM_INFO ../env/apb_sb.sv(91) @ 130: uvm_test_top.env_h.sb_h [apb_sb] Data received from slave 0 monitor = 
+# UVM_INFO ../master_agent/apb_master_drv.sv(161) @ 130: uvm_test_top.env_h.agent_hm.drv_hm [apb_master_drv] [MASTER-TRANS-1] Transfer Complete — MASTER-DRIVER
+# --------------------------------------------------------------------------------------------------
+# Name                           Type              Size  Value                                      
+# --------------------------------------------------------------------------------------------------
+# trans_hm                       apb_master_trans  -     @1442                                      
+#   PWRITE                       integral          1     'h1                                        
+#   PADDR                        integral          8     'h0                                        
+#   PWDATA                       integral          32    'heb203ca4                                 
+#   PSTRB                        integral          4     'hf                                        
+#   PENABLE                      integral          1     'h0                                        
+#   PSEL                         da(integral)      3     -                                          
+#     [0]                        integral          1     'h1                                        
+#     [1]                        integral          1     'h0                                        
+#     [2]                        integral          1     'h0                                        
+#   trans_size                   transfer_size_e   2     WORD                                       
+#   PREADY                       integral          1     'h0                                        
+#   PRDATA                       integral          32    'h0                                        
+#   PSLVERR                      integral          1     'h0                                        
+#   begin_time                   time              64    50                                         
+#   depth                        int               32    'd2                                        
+#   parent sequence (name)       string            7     seqs_hm                                    
+#   parent sequence (full name)  string            43    uvm_test_top.env_h.agent_hm.seqr_hm.seqs_hm
+#   sequencer                    string            35    uvm_test_top.env_h.agent_hm.seqr_hm        
+#   Direction                    string            5     WRITE                                      
+#   Trans Size                   string            4     WORD                                       
+# --------------------------------------------------------------------------------------------------
+# 
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(67) @ 130: uvm_test_top.env_h.agent_hs_0.drv_hs [apb_slave_drv] Transaction complete at SLAVE-DRIVER =
+# -----------------------------------------------------------------------------------------------------
+# Name                           Type             Size  Value                                          
+# -----------------------------------------------------------------------------------------------------
+# trans_hs                       apb_slave_trans  -     @1438                                          
+#   PADDR                        integral         8     'h0                                            
+#   PWDATA                       integral         32    'h0                                            
+#   PRDATA                       integral         32    'h0                                            
+#   PSTRB                        integral         4     'h0                                            
+#   PWRITE                       integral         1     'h0                                            
+#   PENABLE                      integral         1     'h0                                            
+#   PREADY                       integral         1     'h0                                            
+#   PSLVERR                      integral         1     'h0                                            
+#   PSEL                         da(integral)     0     -                                              
+#   no_of_wait_cycles            integral         32    'd1                                            
+#   wait_enable                  integral         1     1                                              
+#   begin_time                   time             64    50                                             
+#   depth                        int              32    'd2                                            
+#   parent sequence (name)       string           9     seqs_hs_0                                      
+#   parent sequence (full name)  string           47    uvm_test_top.env_h.agent_hs_0.seqr_hs.seqs_hs_0
+#   sequencer                    string           37    uvm_test_top.env_h.agent_hs_0.seqr_hs          
+# -----------------------------------------------------------------------------------------------------
+# 
+# UVM_INFO ../env/apb_sb.sv(123) @ 130: uvm_test_top.env_h.sb_h [apb_sb] Data received from slave 0 monitor = 
 # ------------------------------------------------------
 # Name                 Type             Size  Value     
 # ------------------------------------------------------
@@ -173,8 +362,102 @@
 #   wait_enable        integral         1     'd0       
 # ------------------------------------------------------
 # 
+# UVM_INFO ../master_agent/apb_master_seqs.sv(30) @ 130: uvm_test_top.env_h.agent_hm.seqr_hm@@seqs_hm [apb_master_seqs] Transaction-1 sent from MASTER SEQS =
+# --------------------------------------------------------------------------------------------------
+# Name                           Type              Size  Value                                      
+# --------------------------------------------------------------------------------------------------
+# trans_hm                       apb_master_trans  -     @1442                                      
+#   PWRITE                       integral          1     'h1                                        
+#   PADDR                        integral          8     'h0                                        
+#   PWDATA                       integral          32    'heb203ca4                                 
+#   PSTRB                        integral          4     'hf                                        
+#   PENABLE                      integral          1     'h0                                        
+#   PSEL                         da(integral)      3     -                                          
+#     [0]                        integral          1     'h1                                        
+#     [1]                        integral          1     'h0                                        
+#     [2]                        integral          1     'h0                                        
+#   trans_size                   transfer_size_e   2     WORD                                       
+#   PREADY                       integral          1     'h0                                        
+#   PRDATA                       integral          32    'h0                                        
+#   PSLVERR                      integral          1     'h0                                        
+#   begin_time                   time              64    50                                         
+#   end_time                     time              64    130                                        
+#   depth                        int               32    'd2                                        
+#   parent sequence (name)       string            7     seqs_hm                                    
+#   parent sequence (full name)  string            43    uvm_test_top.env_h.agent_hm.seqr_hm.seqs_hm
+#   sequencer                    string            35    uvm_test_top.env_h.agent_hm.seqr_hm        
+#   Direction                    string            5     WRITE                                      
+#   Trans Size                   string            4     WORD                                       
+# --------------------------------------------------------------------------------------------------
+# 
 # 
 # ---------- Master Transaction : 2 ----------
+# 
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(58) @ 130: uvm_test_top.env_h.agent_hs_0.drv_hs [apb_slave_drv] Transaction received at SLAVE-DRIVER =
+# -----------------------------------------------------------------------------------------------------
+# Name                           Type             Size  Value                                          
+# -----------------------------------------------------------------------------------------------------
+# trans_hs                       apb_slave_trans  -     @1564                                          
+#   PADDR                        integral         8     'h0                                            
+#   PWDATA                       integral         32    'h0                                            
+#   PRDATA                       integral         32    'h0                                            
+#   PSTRB                        integral         4     'h0                                            
+#   PWRITE                       integral         1     'h0                                            
+#   PENABLE                      integral         1     'h0                                            
+#   PREADY                       integral         1     'h0                                            
+#   PSLVERR                      integral         1     'h0                                            
+#   PSEL                         da(integral)     0     -                                              
+#   no_of_wait_cycles            integral         32    'd0                                            
+#   wait_enable                  integral         1     'd0                                            
+#   begin_time                   time             64    130                                            
+#   depth                        int              32    'd2                                            
+#   parent sequence (name)       string           9     seqs_hs_0                                      
+#   parent sequence (full name)  string           47    uvm_test_top.env_h.agent_hs_0.seqr_hs.seqs_hs_0
+#   sequencer                    string           37    uvm_test_top.env_h.agent_hs_0.seqr_hs          
+# -----------------------------------------------------------------------------------------------------
+# 
+# UVM_INFO ../master_agent/apb_master_drv.sv(151) @ 130: uvm_test_top.env_h.agent_hm.drv_hm [apb_master_drv] [MASTER-TRANS-2] Data Received at MASTER-DRIVER =
+# --------------------------------------------------------------------------------------------------
+# Name                           Type              Size  Value                                      
+# --------------------------------------------------------------------------------------------------
+# trans_hm                       apb_master_trans  -     @1559                                      
+#   PWRITE                       integral          1     'h1                                        
+#   PADDR                        integral          8     'h0                                        
+#   PWDATA                       integral          32    'h96074a7d                                 
+#   PSTRB                        integral          4     'hf                                        
+#   PENABLE                      integral          1     'h0                                        
+#   PSEL                         da(integral)      0     -                                          
+#   trans_size                   transfer_size_e   2     WORD                                       
+#   PREADY                       integral          1     'h0                                        
+#   PRDATA                       integral          32    'h0                                        
+#   PSLVERR                      integral          1     'h0                                        
+#   begin_time                   time              64    130                                        
+#   depth                        int               32    'd2                                        
+#   parent sequence (name)       string            7     seqs_hm                                    
+#   parent sequence (full name)  string            43    uvm_test_top.env_h.agent_hm.seqr_hm.seqs_hm
+#   sequencer                    string            35    uvm_test_top.env_h.agent_hm.seqr_hm        
+#   Direction                    string            5     WRITE                                      
+#   Trans Size                   string            4     WORD                                       
+# --------------------------------------------------------------------------------------------------
+# 
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(122) @ 170: uvm_test_top.env_h.agent_hs_0.drv_hs [apb_slave_drv] WRITE | ADDR=0x0 | DATA=0x96074a7d | STRB=0xf
+# UVM_INFO ../slave_agent/apb_slave_mon.sv(95) @ 190: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 WRITE sampled =
+# ------------------------------------------------------
+# Name                 Type             Size  Value     
+# ------------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1554     
+#   PADDR              integral         8     'h0       
+#   PWDATA             integral         32    'h96074a7d
+#   PRDATA             integral         32    'h0       
+#   PSTRB              integral         4     'hf       
+#   PWRITE             integral         1     'h1       
+#   PENABLE            integral         1     'h1       
+#   PREADY             integral         1     'h1       
+#   PSLVERR            integral         1     'h0       
+#   PSEL               da(integral)     0     -         
+#   no_of_wait_cycles  integral         32    'd0       
+#   wait_enable        integral         1     'd0       
+# ------------------------------------------------------
 # 
 # UVM_INFO ../slave_agent/apb_slave_mon.sv(104) @ 190: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard = 
 # ------------------------------------------------------
@@ -194,8 +477,170 @@
 #   wait_enable        integral         1     'd0       
 # ------------------------------------------------------
 # 
+# UVM_INFO ../master_agent/apb_master_drv.sv(161) @ 190: uvm_test_top.env_h.agent_hm.drv_hm [apb_master_drv] [MASTER-TRANS-2] Transfer Complete — MASTER-DRIVER
+# --------------------------------------------------------------------------------------------------
+# Name                           Type              Size  Value                                      
+# --------------------------------------------------------------------------------------------------
+# trans_hm                       apb_master_trans  -     @1559                                      
+#   PWRITE                       integral          1     'h1                                        
+#   PADDR                        integral          8     'h0                                        
+#   PWDATA                       integral          32    'h96074a7d                                 
+#   PSTRB                        integral          4     'hf                                        
+#   PENABLE                      integral          1     'h0                                        
+#   PSEL                         da(integral)      3     -                                          
+#     [0]                        integral          1     'h1                                        
+#     [1]                        integral          1     'h0                                        
+#     [2]                        integral          1     'h0                                        
+#   trans_size                   transfer_size_e   2     WORD                                       
+#   PREADY                       integral          1     'h0                                        
+#   PRDATA                       integral          32    'h0                                        
+#   PSLVERR                      integral          1     'h0                                        
+#   begin_time                   time              64    130                                        
+#   depth                        int               32    'd2                                        
+#   parent sequence (name)       string            7     seqs_hm                                    
+#   parent sequence (full name)  string            43    uvm_test_top.env_h.agent_hm.seqr_hm.seqs_hm
+#   sequencer                    string            35    uvm_test_top.env_h.agent_hm.seqr_hm        
+#   Direction                    string            5     WRITE                                      
+#   Trans Size                   string            4     WORD                                       
+# --------------------------------------------------------------------------------------------------
+# 
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(67) @ 190: uvm_test_top.env_h.agent_hs_0.drv_hs [apb_slave_drv] Transaction complete at SLAVE-DRIVER =
+# -----------------------------------------------------------------------------------------------------
+# Name                           Type             Size  Value                                          
+# -----------------------------------------------------------------------------------------------------
+# trans_hs                       apb_slave_trans  -     @1564                                          
+#   PADDR                        integral         8     'h0                                            
+#   PWDATA                       integral         32    'h0                                            
+#   PRDATA                       integral         32    'h0                                            
+#   PSTRB                        integral         4     'h0                                            
+#   PWRITE                       integral         1     'h0                                            
+#   PENABLE                      integral         1     'h0                                            
+#   PREADY                       integral         1     'h0                                            
+#   PSLVERR                      integral         1     'h0                                            
+#   PSEL                         da(integral)     0     -                                              
+#   no_of_wait_cycles            integral         32    'd0                                            
+#   wait_enable                  integral         1     'd0                                            
+#   begin_time                   time             64    130                                            
+#   depth                        int              32    'd2                                            
+#   parent sequence (name)       string           9     seqs_hs_0                                      
+#   parent sequence (full name)  string           47    uvm_test_top.env_h.agent_hs_0.seqr_hs.seqs_hs_0
+#   sequencer                    string           37    uvm_test_top.env_h.agent_hs_0.seqr_hs          
+# -----------------------------------------------------------------------------------------------------
+# 
+# UVM_INFO ../env/apb_sb.sv(123) @ 190: uvm_test_top.env_h.sb_h [apb_sb] Data received from slave 0 monitor = 
+# ------------------------------------------------------
+# Name                 Type             Size  Value     
+# ------------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1554     
+#   PADDR              integral         8     'h0       
+#   PWDATA             integral         32    'h96074a7d
+#   PRDATA             integral         32    'h0       
+#   PSTRB              integral         4     'hf       
+#   PWRITE             integral         1     'h1       
+#   PENABLE            integral         1     'h1       
+#   PREADY             integral         1     'h1       
+#   PSLVERR            integral         1     'h0       
+#   PSEL               da(integral)     0     -         
+#   no_of_wait_cycles  integral         32    'd0       
+#   wait_enable        integral         1     'd0       
+# ------------------------------------------------------
+# 
+# UVM_INFO ../master_agent/apb_master_seqs.sv(30) @ 190: uvm_test_top.env_h.agent_hm.seqr_hm@@seqs_hm [apb_master_seqs] Transaction-2 sent from MASTER SEQS =
+# --------------------------------------------------------------------------------------------------
+# Name                           Type              Size  Value                                      
+# --------------------------------------------------------------------------------------------------
+# trans_hm                       apb_master_trans  -     @1559                                      
+#   PWRITE                       integral          1     'h1                                        
+#   PADDR                        integral          8     'h0                                        
+#   PWDATA                       integral          32    'h96074a7d                                 
+#   PSTRB                        integral          4     'hf                                        
+#   PENABLE                      integral          1     'h0                                        
+#   PSEL                         da(integral)      3     -                                          
+#     [0]                        integral          1     'h1                                        
+#     [1]                        integral          1     'h0                                        
+#     [2]                        integral          1     'h0                                        
+#   trans_size                   transfer_size_e   2     WORD                                       
+#   PREADY                       integral          1     'h0                                        
+#   PRDATA                       integral          32    'h0                                        
+#   PSLVERR                      integral          1     'h0                                        
+#   begin_time                   time              64    130                                        
+#   end_time                     time              64    190                                        
+#   depth                        int               32    'd2                                        
+#   parent sequence (name)       string            7     seqs_hm                                    
+#   parent sequence (full name)  string            43    uvm_test_top.env_h.agent_hm.seqr_hm.seqs_hm
+#   sequencer                    string            35    uvm_test_top.env_h.agent_hm.seqr_hm        
+#   Direction                    string            5     WRITE                                      
+#   Trans Size                   string            4     WORD                                       
+# --------------------------------------------------------------------------------------------------
+# 
 # 
 # ---------- Master Transaction : 3 ----------
+# 
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(58) @ 190: uvm_test_top.env_h.agent_hs_0.drv_hs [apb_slave_drv] Transaction received at SLAVE-DRIVER =
+# -----------------------------------------------------------------------------------------------------
+# Name                           Type             Size  Value                                          
+# -----------------------------------------------------------------------------------------------------
+# trans_hs                       apb_slave_trans  -     @1576                                          
+#   PADDR                        integral         8     'h0                                            
+#   PWDATA                       integral         32    'h0                                            
+#   PRDATA                       integral         32    'h0                                            
+#   PSTRB                        integral         4     'h0                                            
+#   PWRITE                       integral         1     'h0                                            
+#   PENABLE                      integral         1     'h0                                            
+#   PREADY                       integral         1     'h0                                            
+#   PSLVERR                      integral         1     'h0                                            
+#   PSEL                         da(integral)     0     -                                              
+#   no_of_wait_cycles            integral         32    'd0                                            
+#   wait_enable                  integral         1     'd0                                            
+#   begin_time                   time             64    190                                            
+#   depth                        int              32    'd2                                            
+#   parent sequence (name)       string           9     seqs_hs_0                                      
+#   parent sequence (full name)  string           47    uvm_test_top.env_h.agent_hs_0.seqr_hs.seqs_hs_0
+#   sequencer                    string           37    uvm_test_top.env_h.agent_hs_0.seqr_hs          
+# -----------------------------------------------------------------------------------------------------
+# 
+# UVM_INFO ../master_agent/apb_master_drv.sv(151) @ 190: uvm_test_top.env_h.agent_hm.drv_hm [apb_master_drv] [MASTER-TRANS-3] Data Received at MASTER-DRIVER =
+# --------------------------------------------------------------------------------------------------
+# Name                           Type              Size  Value                                      
+# --------------------------------------------------------------------------------------------------
+# trans_hm                       apb_master_trans  -     @1572                                      
+#   PWRITE                       integral          1     'h1                                        
+#   PADDR                        integral          8     'h0                                        
+#   PWDATA                       integral          32    'h5cfbd0a8                                 
+#   PSTRB                        integral          4     'h3                                        
+#   PENABLE                      integral          1     'h0                                        
+#   PSEL                         da(integral)      0     -                                          
+#   trans_size                   transfer_size_e   2     HALFWORD                                   
+#   PREADY                       integral          1     'h0                                        
+#   PRDATA                       integral          32    'h0                                        
+#   PSLVERR                      integral          1     'h0                                        
+#   begin_time                   time              64    190                                        
+#   depth                        int               32    'd2                                        
+#   parent sequence (name)       string            7     seqs_hm                                    
+#   parent sequence (full name)  string            43    uvm_test_top.env_h.agent_hm.seqr_hm.seqs_hm
+#   sequencer                    string            35    uvm_test_top.env_h.agent_hm.seqr_hm        
+#   Direction                    string            5     WRITE                                      
+#   Trans Size                   string            8     HALFWORD                                   
+# --------------------------------------------------------------------------------------------------
+# 
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(122) @ 230: uvm_test_top.env_h.agent_hs_0.drv_hs [apb_slave_drv] WRITE | ADDR=0x0 | DATA=0x9607d0a8 | STRB=0x3
+# UVM_INFO ../slave_agent/apb_slave_mon.sv(95) @ 250: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 WRITE sampled =
+# ------------------------------------------------------
+# Name                 Type             Size  Value     
+# ------------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1568     
+#   PADDR              integral         8     'h0       
+#   PWDATA             integral         32    'h5cfbd0a8
+#   PRDATA             integral         32    'h0       
+#   PSTRB              integral         4     'h3       
+#   PWRITE             integral         1     'h1       
+#   PENABLE            integral         1     'h1       
+#   PREADY             integral         1     'h1       
+#   PSLVERR            integral         1     'h0       
+#   PSEL               da(integral)     0     -         
+#   no_of_wait_cycles  integral         32    'd0       
+#   wait_enable        integral         1     'd0       
+# ------------------------------------------------------
 # 
 # UVM_INFO ../slave_agent/apb_slave_mon.sv(104) @ 250: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard = 
 # ------------------------------------------------------
@@ -215,8 +660,170 @@
 #   wait_enable        integral         1     'd0       
 # ------------------------------------------------------
 # 
+# UVM_INFO ../master_agent/apb_master_drv.sv(161) @ 250: uvm_test_top.env_h.agent_hm.drv_hm [apb_master_drv] [MASTER-TRANS-3] Transfer Complete — MASTER-DRIVER
+# --------------------------------------------------------------------------------------------------
+# Name                           Type              Size  Value                                      
+# --------------------------------------------------------------------------------------------------
+# trans_hm                       apb_master_trans  -     @1572                                      
+#   PWRITE                       integral          1     'h1                                        
+#   PADDR                        integral          8     'h0                                        
+#   PWDATA                       integral          32    'h5cfbd0a8                                 
+#   PSTRB                        integral          4     'h3                                        
+#   PENABLE                      integral          1     'h0                                        
+#   PSEL                         da(integral)      3     -                                          
+#     [0]                        integral          1     'h1                                        
+#     [1]                        integral          1     'h0                                        
+#     [2]                        integral          1     'h0                                        
+#   trans_size                   transfer_size_e   2     HALFWORD                                   
+#   PREADY                       integral          1     'h0                                        
+#   PRDATA                       integral          32    'h0                                        
+#   PSLVERR                      integral          1     'h0                                        
+#   begin_time                   time              64    190                                        
+#   depth                        int               32    'd2                                        
+#   parent sequence (name)       string            7     seqs_hm                                    
+#   parent sequence (full name)  string            43    uvm_test_top.env_h.agent_hm.seqr_hm.seqs_hm
+#   sequencer                    string            35    uvm_test_top.env_h.agent_hm.seqr_hm        
+#   Direction                    string            5     WRITE                                      
+#   Trans Size                   string            8     HALFWORD                                   
+# --------------------------------------------------------------------------------------------------
+# 
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(67) @ 250: uvm_test_top.env_h.agent_hs_0.drv_hs [apb_slave_drv] Transaction complete at SLAVE-DRIVER =
+# -----------------------------------------------------------------------------------------------------
+# Name                           Type             Size  Value                                          
+# -----------------------------------------------------------------------------------------------------
+# trans_hs                       apb_slave_trans  -     @1576                                          
+#   PADDR                        integral         8     'h0                                            
+#   PWDATA                       integral         32    'h0                                            
+#   PRDATA                       integral         32    'h0                                            
+#   PSTRB                        integral         4     'h0                                            
+#   PWRITE                       integral         1     'h0                                            
+#   PENABLE                      integral         1     'h0                                            
+#   PREADY                       integral         1     'h0                                            
+#   PSLVERR                      integral         1     'h0                                            
+#   PSEL                         da(integral)     0     -                                              
+#   no_of_wait_cycles            integral         32    'd0                                            
+#   wait_enable                  integral         1     'd0                                            
+#   begin_time                   time             64    190                                            
+#   depth                        int              32    'd2                                            
+#   parent sequence (name)       string           9     seqs_hs_0                                      
+#   parent sequence (full name)  string           47    uvm_test_top.env_h.agent_hs_0.seqr_hs.seqs_hs_0
+#   sequencer                    string           37    uvm_test_top.env_h.agent_hs_0.seqr_hs          
+# -----------------------------------------------------------------------------------------------------
+# 
+# UVM_INFO ../env/apb_sb.sv(123) @ 250: uvm_test_top.env_h.sb_h [apb_sb] Data received from slave 0 monitor = 
+# ------------------------------------------------------
+# Name                 Type             Size  Value     
+# ------------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1568     
+#   PADDR              integral         8     'h0       
+#   PWDATA             integral         32    'h5cfbd0a8
+#   PRDATA             integral         32    'h0       
+#   PSTRB              integral         4     'h3       
+#   PWRITE             integral         1     'h1       
+#   PENABLE            integral         1     'h1       
+#   PREADY             integral         1     'h1       
+#   PSLVERR            integral         1     'h0       
+#   PSEL               da(integral)     0     -         
+#   no_of_wait_cycles  integral         32    'd0       
+#   wait_enable        integral         1     'd0       
+# ------------------------------------------------------
+# 
+# UVM_INFO ../master_agent/apb_master_seqs.sv(30) @ 250: uvm_test_top.env_h.agent_hm.seqr_hm@@seqs_hm [apb_master_seqs] Transaction-3 sent from MASTER SEQS =
+# --------------------------------------------------------------------------------------------------
+# Name                           Type              Size  Value                                      
+# --------------------------------------------------------------------------------------------------
+# trans_hm                       apb_master_trans  -     @1572                                      
+#   PWRITE                       integral          1     'h1                                        
+#   PADDR                        integral          8     'h0                                        
+#   PWDATA                       integral          32    'h5cfbd0a8                                 
+#   PSTRB                        integral          4     'h3                                        
+#   PENABLE                      integral          1     'h0                                        
+#   PSEL                         da(integral)      3     -                                          
+#     [0]                        integral          1     'h1                                        
+#     [1]                        integral          1     'h0                                        
+#     [2]                        integral          1     'h0                                        
+#   trans_size                   transfer_size_e   2     HALFWORD                                   
+#   PREADY                       integral          1     'h0                                        
+#   PRDATA                       integral          32    'h0                                        
+#   PSLVERR                      integral          1     'h0                                        
+#   begin_time                   time              64    190                                        
+#   end_time                     time              64    250                                        
+#   depth                        int               32    'd2                                        
+#   parent sequence (name)       string            7     seqs_hm                                    
+#   parent sequence (full name)  string            43    uvm_test_top.env_h.agent_hm.seqr_hm.seqs_hm
+#   sequencer                    string            35    uvm_test_top.env_h.agent_hm.seqr_hm        
+#   Direction                    string            5     WRITE                                      
+#   Trans Size                   string            8     HALFWORD                                   
+# --------------------------------------------------------------------------------------------------
+# 
 # 
 # ---------- Master Transaction : 4 ----------
+# 
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(58) @ 250: uvm_test_top.env_h.agent_hs_0.drv_hs [apb_slave_drv] Transaction received at SLAVE-DRIVER =
+# -----------------------------------------------------------------------------------------------------
+# Name                           Type             Size  Value                                          
+# -----------------------------------------------------------------------------------------------------
+# trans_hs                       apb_slave_trans  -     @1588                                          
+#   PADDR                        integral         8     'h0                                            
+#   PWDATA                       integral         32    'h0                                            
+#   PRDATA                       integral         32    'h0                                            
+#   PSTRB                        integral         4     'h0                                            
+#   PWRITE                       integral         1     'h0                                            
+#   PENABLE                      integral         1     'h0                                            
+#   PREADY                       integral         1     'h0                                            
+#   PSLVERR                      integral         1     'h0                                            
+#   PSEL                         da(integral)     0     -                                              
+#   no_of_wait_cycles            integral         32    'd1                                            
+#   wait_enable                  integral         1     1                                              
+#   begin_time                   time             64    250                                            
+#   depth                        int              32    'd2                                            
+#   parent sequence (name)       string           9     seqs_hs_0                                      
+#   parent sequence (full name)  string           47    uvm_test_top.env_h.agent_hs_0.seqr_hs.seqs_hs_0
+#   sequencer                    string           37    uvm_test_top.env_h.agent_hs_0.seqr_hs          
+# -----------------------------------------------------------------------------------------------------
+# 
+# UVM_INFO ../master_agent/apb_master_drv.sv(151) @ 250: uvm_test_top.env_h.agent_hm.drv_hm [apb_master_drv] [MASTER-TRANS-4] Data Received at MASTER-DRIVER =
+# --------------------------------------------------------------------------------------------------
+# Name                           Type              Size  Value                                      
+# --------------------------------------------------------------------------------------------------
+# trans_hm                       apb_master_trans  -     @1584                                      
+#   PWRITE                       integral          1     'h0                                        
+#   PADDR                        integral          8     'h0                                        
+#   PWDATA                       integral          32    'h0                                        
+#   PSTRB                        integral          4     'h0                                        
+#   PENABLE                      integral          1     'h0                                        
+#   PSEL                         da(integral)      0     -                                          
+#   trans_size                   transfer_size_e   2     WORD                                       
+#   PREADY                       integral          1     'h0                                        
+#   PRDATA                       integral          32    'h0                                        
+#   PSLVERR                      integral          1     'h0                                        
+#   begin_time                   time              64    250                                        
+#   depth                        int               32    'd2                                        
+#   parent sequence (name)       string            7     seqs_hm                                    
+#   parent sequence (full name)  string            43    uvm_test_top.env_h.agent_hm.seqr_hm.seqs_hm
+#   sequencer                    string            35    uvm_test_top.env_h.agent_hm.seqr_hm        
+#   Direction                    string            4     READ                                       
+#   Trans Size                   string            4     WORD                                       
+# --------------------------------------------------------------------------------------------------
+# 
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(140) @ 310: uvm_test_top.env_h.agent_hs_0.drv_hs [apb_slave_drv] READ  | ADDR=0x0 | DATA=0xd0a8
+# UVM_INFO ../slave_agent/apb_slave_mon.sv(97) @ 330: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 READ  sampled =
+# -------------------------------------------------
+# Name                 Type             Size  Value
+# -------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1580
+#   PADDR              integral         8     'h0  
+#   PWDATA             integral         32    'h0  
+#   PRDATA             integral         32    'h0  
+#   PSTRB              integral         4     'h0  
+#   PWRITE             integral         1     'h0  
+#   PENABLE            integral         1     'h1  
+#   PREADY             integral         1     'h1  
+#   PSLVERR            integral         1     'h0  
+#   PSEL               da(integral)     0     -    
+#   no_of_wait_cycles  integral         32    'd0  
+#   wait_enable        integral         1     'd0  
+# -------------------------------------------------
 # 
 # UVM_INFO ../slave_agent/apb_slave_mon.sv(104) @ 330: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard = 
 # -------------------------------------------------
@@ -236,7 +843,57 @@
 #   wait_enable        integral         1     'd0  
 # -------------------------------------------------
 # 
-# UVM_INFO ../env/apb_sb.sv(73) @ 330: uvm_test_top.env_h.sb_h [apb_sb] Data received from master monitor = 
+# UVM_INFO ../master_agent/apb_master_drv.sv(161) @ 330: uvm_test_top.env_h.agent_hm.drv_hm [apb_master_drv] [MASTER-TRANS-4] Transfer Complete — MASTER-DRIVER
+# --------------------------------------------------------------------------------------------------
+# Name                           Type              Size  Value                                      
+# --------------------------------------------------------------------------------------------------
+# trans_hm                       apb_master_trans  -     @1584                                      
+#   PWRITE                       integral          1     'h0                                        
+#   PADDR                        integral          8     'h0                                        
+#   PWDATA                       integral          32    'h0                                        
+#   PSTRB                        integral          4     'h0                                        
+#   PENABLE                      integral          1     'h0                                        
+#   PSEL                         da(integral)      3     -                                          
+#     [0]                        integral          1     'h1                                        
+#     [1]                        integral          1     'h0                                        
+#     [2]                        integral          1     'h0                                        
+#   trans_size                   transfer_size_e   2     WORD                                       
+#   PREADY                       integral          1     'h0                                        
+#   PRDATA                       integral          32    'h0                                        
+#   PSLVERR                      integral          1     'h0                                        
+#   begin_time                   time              64    250                                        
+#   depth                        int               32    'd2                                        
+#   parent sequence (name)       string            7     seqs_hm                                    
+#   parent sequence (full name)  string            43    uvm_test_top.env_h.agent_hm.seqr_hm.seqs_hm
+#   sequencer                    string            35    uvm_test_top.env_h.agent_hm.seqr_hm        
+#   Direction                    string            4     READ                                       
+#   Trans Size                   string            4     WORD                                       
+# --------------------------------------------------------------------------------------------------
+# 
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(67) @ 330: uvm_test_top.env_h.agent_hs_0.drv_hs [apb_slave_drv] Transaction complete at SLAVE-DRIVER =
+# -----------------------------------------------------------------------------------------------------
+# Name                           Type             Size  Value                                          
+# -----------------------------------------------------------------------------------------------------
+# trans_hs                       apb_slave_trans  -     @1588                                          
+#   PADDR                        integral         8     'h0                                            
+#   PWDATA                       integral         32    'h0                                            
+#   PRDATA                       integral         32    'h0                                            
+#   PSTRB                        integral         4     'h0                                            
+#   PWRITE                       integral         1     'h0                                            
+#   PENABLE                      integral         1     'h0                                            
+#   PREADY                       integral         1     'h0                                            
+#   PSLVERR                      integral         1     'h0                                            
+#   PSEL                         da(integral)     0     -                                              
+#   no_of_wait_cycles            integral         32    'd1                                            
+#   wait_enable                  integral         1     1                                              
+#   begin_time                   time             64    250                                            
+#   depth                        int              32    'd2                                            
+#   parent sequence (name)       string           9     seqs_hs_0                                      
+#   parent sequence (full name)  string           47    uvm_test_top.env_h.agent_hs_0.seqr_hs.seqs_hs_0
+#   sequencer                    string           37    uvm_test_top.env_h.agent_hs_0.seqr_hs          
+# -----------------------------------------------------------------------------------------------------
+# 
+# UVM_INFO ../env/apb_sb.sv(105) @ 330: uvm_test_top.env_h.sb_h [apb_sb] Data received from master monitor = 
 # --------------------------------------------
 # Name          Type              Size  Value 
 # --------------------------------------------
@@ -255,14 +912,132 @@
 #   Trans Size  string            4     BYTE  
 # --------------------------------------------
 # 
-# UVM_INFO ../env/apb_sb.sv(83) @ 330: uvm_test_top.env_h.sb_h [apb_sb] act_data_q = '{53416}
-# UVM_INFO ../env/apb_sb.sv(91) @ 330: uvm_test_top.env_h.sb_h [apb_sb] Data received from slave 0 monitor = 
+# UVM_INFO ../env/apb_sb.sv(115) @ 330: uvm_test_top.env_h.sb_h [apb_sb] act_data_q = '{53416}
+# UVM_INFO ../env/apb_sb.sv(123) @ 330: uvm_test_top.env_h.sb_h [apb_sb] Data received from slave 0 monitor = 
+# -------------------------------------------------
+# Name                 Type             Size  Value
+# -------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1580
+#   PADDR              integral         8     'h0  
+#   PWDATA             integral         32    'h0  
+#   PRDATA             integral         32    'h0  
+#   PSTRB              integral         4     'h0  
+#   PWRITE             integral         1     'h0  
+#   PENABLE            integral         1     'h1  
+#   PREADY             integral         1     'h1  
+#   PSLVERR            integral         1     'h0  
+#   PSEL               da(integral)     0     -    
+#   no_of_wait_cycles  integral         32    'd0  
+#   wait_enable        integral         1     'd0  
+# -------------------------------------------------
+# 
+# UVM_INFO ../env/apb_sb.sv(145) @ 330: uvm_test_top.env_h.sb_h [apb_sb] exp_data_q = '{53416}
+# UVM_INFO ../master_agent/apb_master_seqs.sv(30) @ 330: uvm_test_top.env_h.agent_hm.seqr_hm@@seqs_hm [apb_master_seqs] Transaction-4 sent from MASTER SEQS =
+# --------------------------------------------------------------------------------------------------
+# Name                           Type              Size  Value                                      
+# --------------------------------------------------------------------------------------------------
+# trans_hm                       apb_master_trans  -     @1584                                      
+#   PWRITE                       integral          1     'h0                                        
+#   PADDR                        integral          8     'h0                                        
+#   PWDATA                       integral          32    'h0                                        
+#   PSTRB                        integral          4     'h0                                        
+#   PENABLE                      integral          1     'h0                                        
+#   PSEL                         da(integral)      3     -                                          
+#     [0]                        integral          1     'h1                                        
+#     [1]                        integral          1     'h0                                        
+#     [2]                        integral          1     'h0                                        
+#   trans_size                   transfer_size_e   2     WORD                                       
+#   PREADY                       integral          1     'h0                                        
+#   PRDATA                       integral          32    'h0                                        
+#   PSLVERR                      integral          1     'h0                                        
+#   begin_time                   time              64    250                                        
+#   end_time                     time              64    330                                        
+#   depth                        int               32    'd2                                        
+#   parent sequence (name)       string            7     seqs_hm                                    
+#   parent sequence (full name)  string            43    uvm_test_top.env_h.agent_hm.seqr_hm.seqs_hm
+#   sequencer                    string            35    uvm_test_top.env_h.agent_hm.seqr_hm        
+#   Direction                    string            4     READ                                       
+#   Trans Size                   string            4     WORD                                       
+# --------------------------------------------------------------------------------------------------
+# 
+# 
+# ---------- Master Transaction : 5 ----------
+# 
+# UVM_INFO ../env/apb_sb.sv(92) @ 330: uvm_test_top.env_h.sb_h [SUCCEED! DATA MATCHED] Exp Data => 0x0000d0a8 == Act Data => 0x0000d0a8
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(58) @ 330: uvm_test_top.env_h.agent_hs_0.drv_hs [apb_slave_drv] Transaction received at SLAVE-DRIVER =
+# -----------------------------------------------------------------------------------------------------
+# Name                           Type             Size  Value                                          
+# -----------------------------------------------------------------------------------------------------
+# trans_hs                       apb_slave_trans  -     @1600                                          
+#   PADDR                        integral         8     'h0                                            
+#   PWDATA                       integral         32    'h0                                            
+#   PRDATA                       integral         32    'h0                                            
+#   PSTRB                        integral         4     'h0                                            
+#   PWRITE                       integral         1     'h0                                            
+#   PENABLE                      integral         1     'h0                                            
+#   PREADY                       integral         1     'h0                                            
+#   PSLVERR                      integral         1     'h0                                            
+#   PSEL                         da(integral)     0     -                                              
+#   no_of_wait_cycles            integral         32    'd1                                            
+#   wait_enable                  integral         1     1                                              
+#   begin_time                   time             64    330                                            
+#   depth                        int              32    'd2                                            
+#   parent sequence (name)       string           9     seqs_hs_0                                      
+#   parent sequence (full name)  string           47    uvm_test_top.env_h.agent_hs_0.seqr_hs.seqs_hs_0
+#   sequencer                    string           37    uvm_test_top.env_h.agent_hs_0.seqr_hs          
+# -----------------------------------------------------------------------------------------------------
+# 
+# UVM_INFO ../master_agent/apb_master_drv.sv(151) @ 330: uvm_test_top.env_h.agent_hm.drv_hm [apb_master_drv] [MASTER-TRANS-5] Data Received at MASTER-DRIVER =
+# --------------------------------------------------------------------------------------------------
+# Name                           Type              Size  Value                                      
+# --------------------------------------------------------------------------------------------------
+# trans_hm                       apb_master_trans  -     @1596                                      
+#   PWRITE                       integral          1     'h1                                        
+#   PADDR                        integral          8     'h0                                        
+#   PWDATA                       integral          32    'h695a88ea                                 
+#   PSTRB                        integral          4     'hf                                        
+#   PENABLE                      integral          1     'h0                                        
+#   PSEL                         da(integral)      0     -                                          
+#   trans_size                   transfer_size_e   2     WORD                                       
+#   PREADY                       integral          1     'h0                                        
+#   PRDATA                       integral          32    'h0                                        
+#   PSLVERR                      integral          1     'h0                                        
+#   begin_time                   time              64    330                                        
+#   depth                        int               32    'd2                                        
+#   parent sequence (name)       string            7     seqs_hm                                    
+#   parent sequence (full name)  string            43    uvm_test_top.env_h.agent_hm.seqr_hm.seqs_hm
+#   sequencer                    string            35    uvm_test_top.env_h.agent_hm.seqr_hm        
+#   Direction                    string            5     WRITE                                      
+#   Trans Size                   string            4     WORD                                       
+# --------------------------------------------------------------------------------------------------
+# 
+# UVM_INFO ../master_agent/apb_master_mon.sv(45) @ 350: uvm_test_top.env_h.agent_hm.mon_hm [apb_master_mon] Data Received at MASTER-MONITOR from SLAVE-DRIVER = 
+# --------------------------------------------
+# Name          Type              Size  Value 
+# --------------------------------------------
+# trans_hm      apb_master_trans  -     @1426 
+#   PWRITE      integral          1     'h0   
+#   PADDR       integral          8     'h0   
+#   PWDATA      integral          32    'h0   
+#   PSTRB       integral          4     'h0   
+#   PENABLE     integral          1     'h1   
+#   PSEL        da(integral)      0     -     
+#   trans_size  transfer_size_e   2     BYTE  
+#   PREADY      integral          1     'h1   
+#   PRDATA      integral          32    'hd0a8
+#   PSLVERR     integral          1     'h0   
+#   Direction   string            4     READ  
+#   Trans Size  string            4     BYTE  
+# --------------------------------------------
+# 
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(122) @ 390: uvm_test_top.env_h.agent_hs_0.drv_hs [apb_slave_drv] WRITE | ADDR=0x0 | DATA=0x695a88ea | STRB=0xf
+# UVM_INFO ../slave_agent/apb_slave_mon.sv(95) @ 410: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 WRITE sampled =
 # ------------------------------------------------------
 # Name                 Type             Size  Value     
 # ------------------------------------------------------
-# trans_hs             apb_slave_trans  -     @1554     
+# trans_hs             apb_slave_trans  -     @1592     
 #   PADDR              integral         8     'h0       
-#   PWDATA             integral         32    'h96074a7d
+#   PWDATA             integral         32    'h695a88ea
 #   PRDATA             integral         32    'h0       
 #   PSTRB              integral         4     'hf       
 #   PWRITE             integral         1     'h1       
@@ -273,9 +1048,6 @@
 #   no_of_wait_cycles  integral         32    'd0       
 #   wait_enable        integral         1     'd0       
 # ------------------------------------------------------
-# 
-# 
-# ---------- Master Transaction : 5 ----------
 # 
 # UVM_INFO ../slave_agent/apb_slave_mon.sv(104) @ 410: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard = 
 # ------------------------------------------------------
@@ -295,16 +1067,63 @@
 #   wait_enable        integral         1     'd0       
 # ------------------------------------------------------
 # 
+# UVM_INFO ../master_agent/apb_master_drv.sv(161) @ 410: uvm_test_top.env_h.agent_hm.drv_hm [apb_master_drv] [MASTER-TRANS-5] Transfer Complete — MASTER-DRIVER
+# --------------------------------------------------------------------------------------------------
+# Name                           Type              Size  Value                                      
+# --------------------------------------------------------------------------------------------------
+# trans_hm                       apb_master_trans  -     @1596                                      
+#   PWRITE                       integral          1     'h1                                        
+#   PADDR                        integral          8     'h0                                        
+#   PWDATA                       integral          32    'h695a88ea                                 
+#   PSTRB                        integral          4     'hf                                        
+#   PENABLE                      integral          1     'h0                                        
+#   PSEL                         da(integral)      3     -                                          
+#     [0]                        integral          1     'h1                                        
+#     [1]                        integral          1     'h0                                        
+#     [2]                        integral          1     'h0                                        
+#   trans_size                   transfer_size_e   2     WORD                                       
+#   PREADY                       integral          1     'h0                                        
+#   PRDATA                       integral          32    'h0                                        
+#   PSLVERR                      integral          1     'h0                                        
+#   begin_time                   time              64    330                                        
+#   depth                        int               32    'd2                                        
+#   parent sequence (name)       string            7     seqs_hm                                    
+#   parent sequence (full name)  string            43    uvm_test_top.env_h.agent_hm.seqr_hm.seqs_hm
+#   sequencer                    string            35    uvm_test_top.env_h.agent_hm.seqr_hm        
+#   Direction                    string            5     WRITE                                      
+#   Trans Size                   string            4     WORD                                       
+# --------------------------------------------------------------------------------------------------
 # 
-# ---------- Master Transaction : 6 ----------
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(67) @ 410: uvm_test_top.env_h.agent_hs_0.drv_hs [apb_slave_drv] Transaction complete at SLAVE-DRIVER =
+# -----------------------------------------------------------------------------------------------------
+# Name                           Type             Size  Value                                          
+# -----------------------------------------------------------------------------------------------------
+# trans_hs                       apb_slave_trans  -     @1600                                          
+#   PADDR                        integral         8     'h0                                            
+#   PWDATA                       integral         32    'h0                                            
+#   PRDATA                       integral         32    'h0                                            
+#   PSTRB                        integral         4     'h0                                            
+#   PWRITE                       integral         1     'h0                                            
+#   PENABLE                      integral         1     'h0                                            
+#   PREADY                       integral         1     'h0                                            
+#   PSLVERR                      integral         1     'h0                                            
+#   PSEL                         da(integral)     0     -                                              
+#   no_of_wait_cycles            integral         32    'd1                                            
+#   wait_enable                  integral         1     1                                              
+#   begin_time                   time             64    330                                            
+#   depth                        int              32    'd2                                            
+#   parent sequence (name)       string           9     seqs_hs_0                                      
+#   parent sequence (full name)  string           47    uvm_test_top.env_h.agent_hs_0.seqr_hs.seqs_hs_0
+#   sequencer                    string           37    uvm_test_top.env_h.agent_hs_0.seqr_hs          
+# -----------------------------------------------------------------------------------------------------
 # 
-# UVM_INFO ../slave_agent/apb_slave_mon.sv(104) @ 470: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard = 
+# UVM_INFO ../env/apb_sb.sv(123) @ 410: uvm_test_top.env_h.sb_h [apb_sb] Data received from slave 0 monitor = 
 # ------------------------------------------------------
 # Name                 Type             Size  Value     
 # ------------------------------------------------------
-# trans_hs             apb_slave_trans  -     @1604     
+# trans_hs             apb_slave_trans  -     @1592     
 #   PADDR              integral         8     'h0       
-#   PWDATA             integral         32    'hf54ad4a2
+#   PWDATA             integral         32    'h695a88ea
 #   PRDATA             integral         32    'h0       
 #   PSTRB              integral         4     'hf       
 #   PWRITE             integral         1     'h1       
@@ -316,202 +1135,105 @@
 #   wait_enable        integral         1     'd0       
 # ------------------------------------------------------
 # 
+# UVM_INFO ../master_agent/apb_master_seqs.sv(30) @ 410: uvm_test_top.env_h.agent_hm.seqr_hm@@seqs_hm [apb_master_seqs] Transaction-5 sent from MASTER SEQS =
+# --------------------------------------------------------------------------------------------------
+# Name                           Type              Size  Value                                      
+# --------------------------------------------------------------------------------------------------
+# trans_hm                       apb_master_trans  -     @1596                                      
+#   PWRITE                       integral          1     'h1                                        
+#   PADDR                        integral          8     'h0                                        
+#   PWDATA                       integral          32    'h695a88ea                                 
+#   PSTRB                        integral          4     'hf                                        
+#   PENABLE                      integral          1     'h0                                        
+#   PSEL                         da(integral)      3     -                                          
+#     [0]                        integral          1     'h1                                        
+#     [1]                        integral          1     'h0                                        
+#     [2]                        integral          1     'h0                                        
+#   trans_size                   transfer_size_e   2     WORD                                       
+#   PREADY                       integral          1     'h0                                        
+#   PRDATA                       integral          32    'h0                                        
+#   PSLVERR                      integral          1     'h0                                        
+#   begin_time                   time              64    330                                        
+#   end_time                     time              64    410                                        
+#   depth                        int               32    'd2                                        
+#   parent sequence (name)       string            7     seqs_hm                                    
+#   parent sequence (full name)  string            43    uvm_test_top.env_h.agent_hm.seqr_hm.seqs_hm
+#   sequencer                    string            35    uvm_test_top.env_h.agent_hm.seqr_hm        
+#   Direction                    string            5     WRITE                                      
+#   Trans Size                   string            4     WORD                                       
+# --------------------------------------------------------------------------------------------------
 # 
-# ---------- Master Transaction : 7 ----------
+# UVM_INFO ../test/apb_base_test.sv(98) @ 410: uvm_test_top [apb_base_test] Master sequence complete — stopping simulation
+# UVM_INFO ../test/apb_base_test.sv(105) @ 410: uvm_test_top [apb_base_test] Objection dropped — run phase complete
+# UVM_INFO ../slave_agent/apb_slave_drv.sv(58) @ 410: uvm_test_top.env_h.agent_hs_0.drv_hs [apb_slave_drv] Transaction received at SLAVE-DRIVER =
+# -----------------------------------------------------------------------------------------------------
+# Name                           Type             Size  Value                                          
+# -----------------------------------------------------------------------------------------------------
+# trans_hs                       apb_slave_trans  -     @1608                                          
+#   PADDR                        integral         8     'h0                                            
+#   PWDATA                       integral         32    'h0                                            
+#   PRDATA                       integral         32    'h0                                            
+#   PSTRB                        integral         4     'h0                                            
+#   PWRITE                       integral         1     'h0                                            
+#   PENABLE                      integral         1     'h0                                            
+#   PREADY                       integral         1     'h0                                            
+#   PSLVERR                      integral         1     'h0                                            
+#   PSEL                         da(integral)     0     -                                              
+#   no_of_wait_cycles            integral         32    'd0                                            
+#   wait_enable                  integral         1     'd0                                            
+#   begin_time                   time             64    410                                            
+#   depth                        int              32    'd2                                            
+#   parent sequence (name)       string           9     seqs_hs_0                                      
+#   parent sequence (full name)  string           47    uvm_test_top.env_h.agent_hs_0.seqr_hs.seqs_hs_0
+#   sequencer                    string           37    uvm_test_top.env_h.agent_hs_0.seqr_hs          
+# -----------------------------------------------------------------------------------------------------
 # 
-# UVM_INFO ../slave_agent/apb_slave_mon.sv(104) @ 610: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard = 
-# -------------------------------------------------
-# Name                 Type             Size  Value
-# -------------------------------------------------
-# trans_hs             apb_slave_trans  -     @1616
-#   PADDR              integral         8     'h0  
-#   PWDATA             integral         32    'h0  
-#   PRDATA             integral         32    'h0  
-#   PSTRB              integral         4     'h0  
-#   PWRITE             integral         1     'h0  
-#   PENABLE            integral         1     'h1  
-#   PREADY             integral         1     'h1  
-#   PSLVERR            integral         1     'h0  
-#   PSEL               da(integral)     0     -    
-#   no_of_wait_cycles  integral         32    'd0  
-#   wait_enable        integral         1     'd0  
-# -------------------------------------------------
-# 
-# UVM_INFO ../env/apb_sb.sv(73) @ 610: uvm_test_top.env_h.sb_h [apb_sb] Data received from master monitor = 
-# ------------------------------------------------
-# Name          Type              Size  Value     
-# ------------------------------------------------
-# trans_hm      apb_master_trans  -     @1426     
-#   PWRITE      integral          1     'h0       
-#   PADDR       integral          8     'h0       
-#   PWDATA      integral          32    'h0       
-#   PSTRB       integral          4     'h0       
-#   PENABLE     integral          1     'h1       
-#   PSEL        da(integral)      0     -         
-#   trans_size  transfer_size_e   2     BYTE      
-#   PREADY      integral          1     'h1       
-#   PRDATA      integral          32    'hf54ad4a2
-#   PSLVERR     integral          1     'h0       
-#   Direction   string            4     READ      
-#   Trans Size  string            4     BYTE      
-# ------------------------------------------------
-# 
-# UVM_INFO ../env/apb_sb.sv(83) @ 610: uvm_test_top.env_h.sb_h [apb_sb] act_data_q = '{53416, 4115322018}
-# UVM_INFO ../env/apb_sb.sv(91) @ 610: uvm_test_top.env_h.sb_h [apb_sb] Data received from slave 0 monitor = 
-# ------------------------------------------------------
-# Name                 Type             Size  Value     
-# ------------------------------------------------------
-# trans_hs             apb_slave_trans  -     @1568     
-#   PADDR              integral         8     'h0       
-#   PWDATA             integral         32    'h5cfbd0a8
-#   PRDATA             integral         32    'h0       
-#   PSTRB              integral         4     'h3       
-#   PWRITE             integral         1     'h1       
-#   PENABLE            integral         1     'h1       
-#   PREADY             integral         1     'h1       
-#   PSLVERR            integral         1     'h0       
-#   PSEL               da(integral)     0     -         
-#   no_of_wait_cycles  integral         32    'd0       
-#   wait_enable        integral         1     'd0       
-# ------------------------------------------------------
-# 
-# 
-# ---------- Master Transaction : 8 ----------
-# 
-# UVM_INFO ../slave_agent/apb_slave_mon.sv(104) @ 710: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard = 
-# -------------------------------------------------
-# Name                 Type             Size  Value
-# -------------------------------------------------
-# trans_hs             apb_slave_trans  -     @1628
-#   PADDR              integral         8     'h0  
-#   PWDATA             integral         32    'h0  
-#   PRDATA             integral         32    'h0  
-#   PSTRB              integral         4     'h0  
-#   PWRITE             integral         1     'h0  
-#   PENABLE            integral         1     'h1  
-#   PREADY             integral         1     'h1  
-#   PSLVERR            integral         1     'h0  
-#   PSEL               da(integral)     0     -    
-#   no_of_wait_cycles  integral         32    'd0  
-#   wait_enable        integral         1     'd0  
-# -------------------------------------------------
-# 
-# UVM_INFO ../env/apb_sb.sv(73) @ 710: uvm_test_top.env_h.sb_h [apb_sb] Data received from master monitor = 
-# ------------------------------------------------
-# Name          Type              Size  Value     
-# ------------------------------------------------
-# trans_hm      apb_master_trans  -     @1426     
-#   PWRITE      integral          1     'h0       
-#   PADDR       integral          8     'h0       
-#   PWDATA      integral          32    'h0       
-#   PSTRB       integral          4     'h0       
-#   PENABLE     integral          1     'h1       
-#   PSEL        da(integral)      0     -         
-#   trans_size  transfer_size_e   2     BYTE      
-#   PREADY      integral          1     'h1       
-#   PRDATA      integral          32    'hf54ad4a2
-#   PSLVERR     integral          1     'h0       
-#   Direction   string            4     READ      
-#   Trans Size  string            4     BYTE      
-# ------------------------------------------------
-# 
-# UVM_INFO ../env/apb_sb.sv(83) @ 710: uvm_test_top.env_h.sb_h [apb_sb] act_data_q = '{53416, 4115322018, 4115322018}
-# UVM_INFO ../env/apb_sb.sv(91) @ 710: uvm_test_top.env_h.sb_h [apb_sb] Data received from slave 0 monitor = 
-# -------------------------------------------------
-# Name                 Type             Size  Value
-# -------------------------------------------------
-# trans_hs             apb_slave_trans  -     @1580
-#   PADDR              integral         8     'h0  
-#   PWDATA             integral         32    'h0  
-#   PRDATA             integral         32    'h0  
-#   PSTRB              integral         4     'h0  
-#   PWRITE             integral         1     'h0  
-#   PENABLE            integral         1     'h1  
-#   PREADY             integral         1     'h1  
-#   PSLVERR            integral         1     'h0  
-#   PSEL               da(integral)     0     -    
-#   no_of_wait_cycles  integral         32    'd0  
-#   wait_enable        integral         1     'd0  
-# -------------------------------------------------
-# 
-# UVM_INFO ../env/apb_sb.sv(112) @ 710: uvm_test_top.env_h.sb_h [apb_sb] exp_data_q = '{53416}
-# 
-# ---------- Master Transaction : 9 ----------
-# 
-# UVM_INFO ../slave_agent/apb_slave_mon.sv(104) @ 790: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard = 
-# ------------------------------------------------------
-# Name                 Type             Size  Value     
-# ------------------------------------------------------
-# trans_hs             apb_slave_trans  -     @1640     
-#   PADDR              integral         8     'h0       
-#   PWDATA             integral         32    'h8015efa5
-#   PRDATA             integral         32    'h0       
-#   PSTRB              integral         4     'hf       
-#   PWRITE             integral         1     'h1       
-#   PENABLE            integral         1     'h1       
-#   PREADY             integral         1     'h1       
-#   PSLVERR            integral         1     'h0       
-#   PSEL               da(integral)     0     -         
-#   no_of_wait_cycles  integral         32    'd0       
-#   wait_enable        integral         1     'd0       
-# ------------------------------------------------------
-# 
-# 
-# ---------- Master Transaction : 10 ----------
-# 
-# UVM_INFO ../slave_agent/apb_slave_mon.sv(104) @ 850: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard = 
-# ------------------------------------------------------
-# Name                 Type             Size  Value     
-# ------------------------------------------------------
-# trans_hs             apb_slave_trans  -     @1652     
-#   PADDR              integral         8     'h0       
-#   PWDATA             integral         32    'heb617489
-#   PRDATA             integral         32    'h0       
-#   PSTRB              integral         4     'hf       
-#   PWRITE             integral         1     'h1       
-#   PENABLE            integral         1     'h1       
-#   PREADY             integral         1     'h1       
-#   PSLVERR            integral         1     'h0       
-#   PSEL               da(integral)     0     -         
-#   no_of_wait_cycles  integral         32    'd0       
-#   wait_enable        integral         1     'd0       
-# ------------------------------------------------------
-# 
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 430: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO ../master_agent/apb_master_mon.sv(76) @ 430: uvm_test_top.env_h.agent_hm.mon_hm [apb_master_mon] num_of_packets_sampled = 1
 # 
 # ---------------------------------------
-# 	    SIMULATION REPORT 		
+# 	   | SIMULATION REPORT |		
 # ---------------------------------------
-# Total Transactions = 0
+# Total Transactions = 5
+# WRITE Transactions : 4
+# READ  Transactions : 1
 # ---------------------------------------
-# WRITE Transactions : 
-# 	 TOTAL		= 0 
-# 	 SUCCEED	= 0 
-# 	 FAILED		= 0
+# 	  |SCOREBOARD Comparison|
 # ---------------------------------------
-# READ  Transactions : 
-# 	 TOTAL		= 0 
-# 	 SUCCEED	= 0 
-# 	 FAILED		= 0
-# 
+# MATCHED = 1
+# MIS-MATCHED = 0
 # ---------------------------------------
 # 	    COVERAGE REPORT 		
 # ---------------------------------------
 # ---------------------------------------
-# UVM_INFO ../slave_agent/apb_slave_mon.sv(113) @ 850: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] mem_model[0] = 0xeb617489
-# UVM_INFO ../env/apb_sb.sv(134) @ 850: uvm_test_top.env_h.sb_h [apb_sb] mem_model[0] = 0x0000d0a8
+# UVM_INFO ../slave_agent/apb_slave_mon.sv(113) @ 430: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] mem_model[0] = 0x695a88ea
+# UVM_INFO ../env/apb_sb.sv(172) @ 430: uvm_test_top.env_h.sb_h [apb_sb] mem_model[0] = 0x695a88ea
 # 
 # --- UVM Report Summary ---
 # 
 # ** Report counts by severity
-# UVM_INFO :   26
+# UVM_INFO :   89
 # UVM_WARNING :    0
 # UVM_ERROR :    0
 # UVM_FATAL :    0
 # ** Report counts by id
-# [apb_sb]    12
+# [Questa UVM]     2
+# [RNTST]     1
+# [SUCCEED! DATA MATCHED]     1
+# [TEST_DONE]     1
+# [UVMTOP]     1
+# [apb_base_test]     4
+# [apb_env]     2
+# [apb_master_agent]     4
+# [apb_master_drv]    10
+# [apb_master_mon]     2
+# [apb_master_seqs]     5
+# [apb_sb]     9
+# [apb_slave_agent]    12
 # [apb_slave_config]     3
+# [apb_slave_drv]    21
 # [apb_slave_mon]    11
 # ** Note: $finish    : C:/questasim64_10.7c/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
-#    Time: 850 ns  Iteration: 64  Instance: /apb_top
-# End time: 14:47:38 on Jun 05,2026, Elapsed time: 0:00:02
+#    Time: 430 ns  Iteration: 53  Instance: /apb_top
+# End time: 15:45:50 on Jun 05,2026, Elapsed time: 0:00:02
 # Errors: 0, Warnings: 0

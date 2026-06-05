@@ -25,9 +25,9 @@ cmp :
 	vlog -coveropt 3 +acc +cover $(DEFS) $(PKG) $(TB) +incdir+../env +incdir+../test +incdir+../master_agent +incdir+../slave_agent
 
 sim :
-	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_VERBOSITY=UVM_NONE
+	vsim -vopt $(TBModule) -c -do "run -all; exit"
 
-all : clean lib cmp sim
+all : lib cmp sim
 
 run-tc1 : 
 	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_TESTNAME=apb_low_addr_range_test

@@ -85,7 +85,7 @@ class apb_env_config extends uvm_object;
         `uvm_info(get_type_name(),
             $sformatf("=== ENV CONFIG SUMMARY ===\n No of Slaves : %0d",
                        no_of_slaves),
-            UVM_NONE)
+            UVM_MEDIUM)
         foreach(config_hs[i])
             config_hs[i].print_slave_info();
     endfunction

@@ -100,6 +100,7 @@ class apb_base_test extends uvm_test;
         join
 
         //  Step 3 — drop objection — simulation ends cleanly
+        phase.phase_done.set_drain_time(this, 20);
         phase.drop_objection(this);
         `uvm_info(get_type_name(), "Objection dropped — run phase complete", UVM_MEDIUM)
     endtask

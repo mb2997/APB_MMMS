@@ -56,7 +56,7 @@ class apb_slave_config extends uvm_object;
                        end_addr,
                        is_active.name(),
                        no_of_wait_cycles),
-            UVM_NONE)
+            UVM_MEDIUM)
     endfunction
 
 endclass : apb_slave_config
