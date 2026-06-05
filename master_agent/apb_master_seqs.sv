@@ -5,9 +5,6 @@ class apb_master_seqs extends uvm_sequence #(apb_master_trans);
 
     `uvm_object_utils(apb_master_seqs)
 
-    //  declare no_of_trans — configurable [adjustable] from test level
-    int unsigned no_of_trans = 10;   // default value — overridable [changeable] per test
-
     function new(string name = "apb_master_seqs");
         super.new(name);
     endfunction

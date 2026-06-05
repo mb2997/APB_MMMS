@@ -75,5 +75,19 @@ package apb_pkg;
         repeat(no_of_clocks)
             @(posedge vif.PCLK);
     endtask : wait_for_posedge_clock
+
+    task wait_for_reset(int max_wait_clocks = 10);
+        fork
+            begin : reset_wait
+                wait(vif.PRESETn == 1'b1);
+            end
+            begin : reset_timeout
+                repeat(max_wait_clocks)
+                    @(vif.slv_drv_cb);
+                `uvm_error("RESET_TIMEOUT", $sformatf("PRESETn not deasserted after %0d cycles", max_wait_clocks))
+            end
+        join_any
+        disable fork;
+    endtask
     
 endpackage : apb_pkg

@@ -107,25 +107,6 @@ class apb_master_drv extends uvm_driver #(apb_master_trans);
     endtask
 
     // ----------------------------------------------------------------
-    // wait_for_reset
-    // Waits for PRESETn to deassert with a timeout guard
-    // ----------------------------------------------------------------
-    task wait_for_reset();
-        fork
-            begin : reset_wait
-                wait(vif.PRESETn == 1'b1);
-            end
-            begin : reset_timeout
-                repeat(10) @(vif.mas_drv_cb);
-                `uvm_error("RESET_WAIT_TIMEOUT",
-                    "PRESETn not deasserted after 10 clock cycles")
-            end
-        join_any
-        disable fork;
-        `uvm_info(get_type_name(), "PRESETn deasserted — master driver active", UVM_MEDIUM)
-    endtask
-
-    // ----------------------------------------------------------------
     // run_phase
     // ----------------------------------------------------------------
     task run_phase(uvm_phase phase);

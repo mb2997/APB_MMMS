@@ -36,30 +36,13 @@ class apb_slave_mon extends uvm_monitor;
         super.connect_phase(phase);
     endfunction
 
-    task wait_for_reset();
-        fork
-            begin : reset_wait
-                wait(vif.PRESETn == 1'b1);
-            end
-            begin : reset_timeout
-                repeat(10) @(vif.slv_drv_cb);
-                `uvm_error("RESET_WAIT_TIMEOUT",
-                    "PRESETn not deasserted after 10 clock cycles")
-            end
-        join_any
-        disable fork;
-        `uvm_info(get_type_name(), "PRESETn deasserted — slave monitor active", UVM_MEDIUM)
-    endtask
-
     task run_phase(uvm_phase phase);
-
         // Wait for reset before sampling anything
         wait_for_reset();
 
         forever begin
             data_from_inf();
         end
-
     endtask
 
     // --------------------------------------------------------
@@ -72,16 +55,10 @@ class apb_slave_mon extends uvm_monitor;
             //  byte-lane write — check each PSTRB bit
             for(int b = 0; b < `DATA_WIDTH/8; b++) begin
                 if(trans_hs.PSTRB[b])
-                    config_hs.mem_model[trans_hs.PADDR][(b*8)+:8] =
-                        trans_hs.PWDATA[(b*8)+:8];
+                    config_hs.mem_model[trans_hs.PADDR][(b*8)+:8] = trans_hs.PWDATA[(b*8)+:8];
             end
 
-            `uvm_info(get_type_name(),
-                $sformatf("Slave-%0d mem_model[0x%0h] = 0x%0h | PSTRB=0x%0h",
-                           config_hs.slave_id,
-                           trans_hs.PADDR,
-                           config_hs.mem_model[trans_hs.PADDR],
-                           trans_hs.PSTRB),
+            `uvm_info(get_type_name(), $sformatf("Slave-%0d mem_model[0x%0h] = 0x%0h | PSTRB=0x%0h", config_hs.slave_id, trans_hs.PADDR, config_hs.mem_model[trans_hs.PADDR], trans_hs.PSTRB),
                 UVM_HIGH)
         end
     endfunction
@@ -127,7 +104,7 @@ class apb_slave_mon extends uvm_monitor;
 
         // Broadcast [send out] to scoreboard
         slv_mon_ap.write(trans_hs);
-        `uvm_info(get_type_name(), $sformatf("Slave-%0d transaction sent to scoreboard", config_hs.slave_id), UVM_MEDIUM)
+        `uvm_info(get_type_name(), $sformatf("Slave-%0d transaction sent to scoreboard", config_hs.slave_id), UVM_NONE)
 
         num_of_slv_packets_sampled++;
 
@@ -138,9 +115,6 @@ class apb_slave_mon extends uvm_monitor;
     // --------------------------------------------------------
     function void report_phase(uvm_phase phase);
         super.report_phase(phase);
-
-        //  use slave_id instead of static cnt — clean and explicit
-        // `uvm_info(get_type_name(), $sformatf("=== SLAVE-%0d MONITOR REPORT | Packets Sampled: %0d ===", config_hs.slave_id,num_of_slv_packets_sampled), UVM_NONE)
 
         //  foreach already iterates existing keys — exists() check redundant
         foreach(config_hs.mem_model[addr])

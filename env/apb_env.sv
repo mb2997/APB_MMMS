@@ -70,7 +70,7 @@ class apb_env extends uvm_env;
 
         //  ALL slave monitors → scoreboard — properly connected [not commented out]
         foreach(agent_hs[i])
-            // agent_hs[i].mon_hs.slv_mon_ap.connect(sb_h.slv_mon_fifo_h.analysis_export);
+            agent_hs[i].mon_hs.slv_mon_ap.connect(sb_h.slv_mon_fifo_h[i].analysis_export);
 
         `uvm_info(get_type_name(), "Connect-Phase complete in ENV", UVM_MEDIUM)
 

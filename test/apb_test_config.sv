@@ -11,7 +11,7 @@ class apb_test_config extends uvm_object;
     endfunction
 
     apb_env_config config_he;
-    int no_of_slaves = 4;
+    int no_of_slaves = `NO_OF_SLAVES;
 
 endclass : apb_test_config
 

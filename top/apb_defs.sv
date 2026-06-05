@@ -2,7 +2,7 @@
 `define DATA_WIDTH 32
 `define STRB_WIDTH (`DATA_WIDTH/8) 
 `define PREADY_MAX_WAIT 15
-`define NO_OF_SLAVES 4
+`define NO_OF_SLAVES 3
 `define CYCLE 20
 
 typedef enum bit [1:0] {

@@ -23,7 +23,7 @@ cmp :
 	vlog -coveropt 3 +acc +cover $(DEFS) $(PKG) $(TB) +incdir+../env +incdir+../test +incdir+../master_agent +incdir+../slave_agent
 
 sim :
-	vsim -vopt $(TBModule) -c -do "run -all; exit"
+	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_VERBOSITY=UVM_NONE
 
 all : lib cmp sim
 

@@ -83,25 +83,6 @@ class apb_slave_drv extends uvm_driver #(apb_slave_trans);
     endtask
 
     // ----------------------------------------------------------------
-    // wait_for_reset
-    // ----------------------------------------------------------------
-    task wait_for_reset();
-        fork
-            begin : reset_wait
-                wait(vif.PRESETn == 1'b1);
-            end
-            begin : reset_timeout
-                repeat(10) @(vif.slv_drv_cb);
-                `uvm_error("RESET_TIMEOUT",
-                    "PRESETn not deasserted after 10 cycles in slave driver")
-            end
-        join_any
-        disable fork;
-        `uvm_info(get_type_name(),
-            "PRESETn deasserted — slave driver active", UVM_MEDIUM)
-    endtask
-
-    // ----------------------------------------------------------------
     // drive_to_inf
     // Handles one complete APB transfer — write or read
     // ----------------------------------------------------------------
@@ -162,7 +143,7 @@ class apb_slave_drv extends uvm_driver #(apb_slave_trans);
             else begin
                 // Address never written — return 0 and flag error
                 vif.slv_drv_cb.PRDATA  <= '0;
-                `uvm_info(get_type_name(), $sformatf("READ_ERROR | ADDR=0x%0h not in mem_model — returning 0, asserting PSLVERR", vif.slv_drv_cb.PADDR), UVM_MEDIUM)
+                `uvm_info(get_type_name(), $sformatf("READ_ERROR | ADDR=0x%0h not in mem_model — returning 0", vif.slv_drv_cb.PADDR), UVM_MEDIUM)
             end
 
             // Assert PREADY — read data valid on bus
