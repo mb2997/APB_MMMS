@@ -16,6 +16,8 @@ help:
 	@echo " tc3    		=>  Run TESTCASE-4 for LSB-to-MSB Data Transaction"
 	@echo =================================================================================
 
+clean:
+	del /Q transcript work
 lib :
 	vlib work
 	
@@ -25,7 +27,7 @@ cmp :
 sim :
 	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_VERBOSITY=UVM_NONE
 
-all : lib cmp sim
+all : clean lib cmp sim
 
 run-tc1 : 
 	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_TESTNAME=apb_low_addr_range_test

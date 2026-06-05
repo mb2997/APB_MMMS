@@ -22,7 +22,7 @@ class apb_master_seqs extends uvm_sequence #(apb_master_trans);
             start_item(trans_hm);
 
             //  randomize after start_item — inline constraint as example
-            if(!trans_hm.randomize())
+            if(!trans_hm.randomize() with {PADDR == 8'h00;})
                 `uvm_fatal(get_type_name(), "Randomization failed for master trans")
 
             finish_item(trans_hm);

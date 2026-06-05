@@ -111,8 +111,6 @@ class apb_slave_drv extends uvm_driver #(apb_slave_trans);
         // ----------------------------------------
         if(vif.slv_drv_cb.PWRITE == 1'b1) begin
 
-            // Write each valid byte lane [only where PSTRB is set]
-            // for(int b = 0; b < `DATA_WIDTH/8; b++)
             foreach(vif.slv_drv_cb.PSTRB[b])
             begin
                 if(vif.slv_drv_cb.PSTRB[b]) 
@@ -124,6 +122,7 @@ class apb_slave_drv extends uvm_driver #(apb_slave_trans);
             `uvm_info(get_type_name(), $sformatf("WRITE | ADDR=0x%0h | DATA=0x%0h | STRB=0x%0h", vif.slv_drv_cb.PADDR, config_hs.mem_model[vif.slv_drv_cb.PADDR], vif.slv_drv_cb.PSTRB), UVM_MEDIUM)
 
             // Assert PREADY — write complete
+            vif.slv_drv_cb.PRDATA  <= 'hz;
             vif.slv_drv_cb.PSLVERR <= 1'b0;
             @(vif.slv_drv_cb);
 
@@ -142,12 +141,11 @@ class apb_slave_drv extends uvm_driver #(apb_slave_trans);
             end
             else begin
                 // Address never written — return 0 and flag error
-                vif.slv_drv_cb.PRDATA  <= '0;
+                vif.slv_drv_cb.PRDATA  <= 'hz;
                 `uvm_info(get_type_name(), $sformatf("READ_ERROR | ADDR=0x%0h not in mem_model — returning 0", vif.slv_drv_cb.PADDR), UVM_MEDIUM)
             end
 
             // Assert PREADY — read data valid on bus
-            vif.slv_drv_cb.PREADY <= 1'b1;
             @(vif.slv_drv_cb);
 
         end

@@ -39,6 +39,8 @@ class apb_master_mon extends uvm_monitor;
 
         forever
         begin
+            // Wait for reset before sampling anything
+            wait_for_reset();
             data_from_inf();
             `uvm_info(get_type_name(),$sformatf("Data Received at MASTER-MONITOR from SLAVE-DRIVER = \n%s",trans_hm.sprint()),UVM_MEDIUM)
         end
@@ -47,32 +49,25 @@ class apb_master_mon extends uvm_monitor;
 
     task data_from_inf();
         begin
-            @(vif.PSEL or vif.PADDR or vif.PWDATA or vif.PWRITE or vif.PREADY or vif.PRDATA);
+
+            wait(!vif.mas_mon_cb.PWRITE && vif.mas_mon_cb.PENABLE);
             
-            @(posedge vif.PCLK);
+            foreach(vif.mas_mon_cb.PSEL[i])
+                trans_hm.PSEL[i] = vif.mas_mon_cb.PSEL[i];
 
-            foreach(vif.PSEL[i])
-                trans_hm.PSEL[i] = vif.PSEL[i];
+            wait(vif.mas_mon_cb.PREADY);
 
-            trans_hm.PADDR = vif.PADDR;
-            trans_hm.PWDATA = vif.PWDATA;
-            trans_hm.PWRITE = vif.PWRITE;
-            
-            wait(vif.PENABLE);
-            wait(vif.PREADY);
+            trans_hm.PENABLE = vif.mas_mon_cb.PENABLE;
+            trans_hm.PADDR = vif.mas_mon_cb.PADDR;
+            trans_hm.PREADY = vif.mas_mon_cb.PREADY;
+            trans_hm.PWRITE = vif.mas_mon_cb.PWRITE;
+            trans_hm.PRDATA = vif.mas_mon_cb.PRDATA;
+            trans_hm.PSLVERR = vif.mas_mon_cb.PSLVERR;
 
-            trans_hm.PENABLE = vif.PENABLE;
-            trans_hm.PREADY = vif.PREADY;
+            mas_mon_ap.write(trans_hm);
+            no_of_pkt_sampled++;
 
-            if(trans_hm.PWRITE == 0)
-                trans_hm.PRDATA = vif.PRDATA;
-
-            if(trans_hm.PENABLE && trans_hm.PREADY)
-                begin
-                    mas_mon_ap.write(trans_hm);
-                    no_of_pkt_sampled++;
-                    `uvm_info(get_type_name(),$sformatf("Data Sent from MASTER-MONITOR to SCOREBOARD = \n%s",trans_hm.sprint()),UVM_MEDIUM)
-                end
+            @(vif.mas_mon_cb);
         end
     endtask
 

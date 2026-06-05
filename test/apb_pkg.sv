@@ -2,7 +2,7 @@
 
 package apb_pkg;
 
-    int no_of_trans = 5;
+    int no_of_trans = 10;
 
     `include "../top/apb_defs.sv"
 

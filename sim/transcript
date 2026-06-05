@@ -1,6 +1,6 @@
 # vsim -vopt apb_top -c -do "run -all; exit" "+UVM_VERBOSITY=UVM_NONE" 
-# Start time: 18:43:25 on Jun 04,2026
-# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# Start time: 14:47:36 on Jun 05,2026
+# ** Note: (vsim-3812) Design is being optimized...
 # //  Questa Sim-64
 # //  Version 10.7c win64 Aug 18 2018
 # //
@@ -137,217 +137,346 @@
 # 
 # ---------- Master Transaction : 1 ----------
 # 
-# UVM_INFO ../env/apb_sb.sv(72) @ 91: uvm_test_top.env_h.sb_h [apb_sb] Data received from master monitor = 
-# -------------------------------------------
-# Name          Type              Size  Value
-# -------------------------------------------
-# trans_hm      apb_master_trans  -     @1426
-#   PWRITE      integral          1     'h0  
-#   PADDR       integral          8     'h0  
-#   PWDATA      integral          32    'h0  
-#   PSTRB       integral          4     'h0  
-#   PENABLE     integral          1     'h1  
-#   PSEL        da(integral)      0     -    
-#   trans_size  transfer_size_e   2     BYTE 
-#   PREADY      integral          1     'h1  
-#   PRDATA      integral          32    'h0  
-#   PSLVERR     integral          1     'h0  
-#   Direction   string            4     READ 
-#   Trans Size  string            4     BYTE 
-# -------------------------------------------
+# UVM_INFO ../slave_agent/apb_slave_mon.sv(104) @ 130: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard = 
+# ------------------------------------------------------
+# Name                 Type             Size  Value     
+# ------------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1542     
+#   PADDR              integral         8     'h0       
+#   PWDATA             integral         32    'heb203ca4
+#   PRDATA             integral         32    'h0       
+#   PSTRB              integral         4     'hf       
+#   PWRITE             integral         1     'h1       
+#   PENABLE            integral         1     'h1       
+#   PREADY             integral         1     'h1       
+#   PSLVERR            integral         1     'h0       
+#   PSEL               da(integral)     0     -         
+#   no_of_wait_cycles  integral         32    'd0       
+#   wait_enable        integral         1     'd0       
+# ------------------------------------------------------
 # 
-# UVM_INFO ../slave_agent/apb_slave_mon.sv(107) @ 110: uvm_test_top.env_h.agent_hs_2.mon_hs [apb_slave_mon] Slave-2 transaction sent to scoreboard
+# UVM_INFO ../env/apb_sb.sv(91) @ 130: uvm_test_top.env_h.sb_h [apb_sb] Data received from slave 0 monitor = 
+# ------------------------------------------------------
+# Name                 Type             Size  Value     
+# ------------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1542     
+#   PADDR              integral         8     'h0       
+#   PWDATA             integral         32    'heb203ca4
+#   PRDATA             integral         32    'h0       
+#   PSTRB              integral         4     'hf       
+#   PWRITE             integral         1     'h1       
+#   PENABLE            integral         1     'h1       
+#   PREADY             integral         1     'h1       
+#   PSLVERR            integral         1     'h0       
+#   PSEL               da(integral)     0     -         
+#   no_of_wait_cycles  integral         32    'd0       
+#   wait_enable        integral         1     'd0       
+# ------------------------------------------------------
+# 
 # 
 # ---------- Master Transaction : 2 ----------
 # 
-# UVM_INFO ../env/apb_sb.sv(77) @ 110: uvm_test_top.env_h.sb_h [apb_sb] Data received from slave monitor = 
-# -------------------------------------------
-# Name          Type              Size  Value
-# -------------------------------------------
-# trans_hm      apb_master_trans  -     @1256
-#   PWRITE      integral          1     'h0  
-#   PADDR       integral          8     'h0  
-#   PWDATA      integral          32    'h0  
-#   PSTRB       integral          4     'h0  
-#   PENABLE     integral          1     'h0  
-#   PSEL        da(integral)      0     -    
-#   trans_size  transfer_size_e   2     BYTE 
-#   PREADY      integral          1     'h0  
-#   PRDATA      integral          32    'h0  
-#   PSLVERR     integral          1     'h0  
-#   Direction   string            4     READ 
-#   Trans Size  string            4     BYTE 
-# -------------------------------------------
+# UVM_INFO ../slave_agent/apb_slave_mon.sv(104) @ 190: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard = 
+# ------------------------------------------------------
+# Name                 Type             Size  Value     
+# ------------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1554     
+#   PADDR              integral         8     'h0       
+#   PWDATA             integral         32    'h96074a7d
+#   PRDATA             integral         32    'h0       
+#   PSTRB              integral         4     'hf       
+#   PWRITE             integral         1     'h1       
+#   PENABLE            integral         1     'h1       
+#   PREADY             integral         1     'h1       
+#   PSLVERR            integral         1     'h0       
+#   PSEL               da(integral)     0     -         
+#   no_of_wait_cycles  integral         32    'd0       
+#   wait_enable        integral         1     'd0       
+# ------------------------------------------------------
 # 
-# UVM_INFO ../env/apb_sb.sv(72) @ 171: uvm_test_top.env_h.sb_h [apb_sb] Data received from master monitor = 
-# ------------------------------------------------
-# Name          Type              Size  Value     
-# ------------------------------------------------
-# trans_hm      apb_master_trans  -     @1426     
-#   PWRITE      integral          1     'h1       
-#   PADDR       integral          8     'h2d      
-#   PWDATA      integral          32    'h96074a7d
-#   PSTRB       integral          4     'h0       
-#   PENABLE     integral          1     'h1       
-#   PSEL        da(integral)      0     -         
-#   trans_size  transfer_size_e   2     BYTE      
-#   PREADY      integral          1     'h1       
-#   PRDATA      integral          32    'h0       
-#   PSLVERR     integral          1     'h0       
-#   Direction   string            5     WRITE     
-#   Trans Size  string            4     BYTE      
-# ------------------------------------------------
-# 
-# UVM_INFO ../slave_agent/apb_slave_mon.sv(107) @ 190: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard
 # 
 # ---------- Master Transaction : 3 ----------
 # 
-# UVM_INFO ../env/apb_sb.sv(77) @ 190: uvm_test_top.env_h.sb_h [apb_sb] Data received from slave monitor = 
-# -------------------------------------------
-# Name          Type              Size  Value
-# -------------------------------------------
-# trans_hm      apb_master_trans  -     @1256
-#   PWRITE      integral          1     'h0  
-#   PADDR       integral          8     'h0  
-#   PWDATA      integral          32    'h0  
-#   PSTRB       integral          4     'h0  
-#   PENABLE     integral          1     'h0  
-#   PSEL        da(integral)      0     -    
-#   trans_size  transfer_size_e   2     BYTE 
-#   PREADY      integral          1     'h0  
-#   PRDATA      integral          32    'h0  
-#   PSLVERR     integral          1     'h0  
-#   Direction   string            4     READ 
-#   Trans Size  string            4     BYTE 
-# -------------------------------------------
+# UVM_INFO ../slave_agent/apb_slave_mon.sv(104) @ 250: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard = 
+# ------------------------------------------------------
+# Name                 Type             Size  Value     
+# ------------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1568     
+#   PADDR              integral         8     'h0       
+#   PWDATA             integral         32    'h5cfbd0a8
+#   PRDATA             integral         32    'h0       
+#   PSTRB              integral         4     'h3       
+#   PWRITE             integral         1     'h1       
+#   PENABLE            integral         1     'h1       
+#   PREADY             integral         1     'h1       
+#   PSLVERR            integral         1     'h0       
+#   PSEL               da(integral)     0     -         
+#   no_of_wait_cycles  integral         32    'd0       
+#   wait_enable        integral         1     'd0       
+# ------------------------------------------------------
 # 
-# UVM_INFO ../env/apb_sb.sv(72) @ 231: uvm_test_top.env_h.sb_h [apb_sb] Data received from master monitor = 
-# ------------------------------------------------
-# Name          Type              Size  Value     
-# ------------------------------------------------
-# trans_hm      apb_master_trans  -     @1426     
-#   PWRITE      integral          1     'h1       
-#   PADDR       integral          8     'h70      
-#   PWDATA      integral          32    'h5cfbd0a8
-#   PSTRB       integral          4     'h0       
-#   PENABLE     integral          1     'h1       
-#   PSEL        da(integral)      0     -         
-#   trans_size  transfer_size_e   2     BYTE      
-#   PREADY      integral          1     'h1       
-#   PRDATA      integral          32    'h0       
-#   PSLVERR     integral          1     'h0       
-#   Direction   string            5     WRITE     
-#   Trans Size  string            4     BYTE      
-# ------------------------------------------------
-# 
-# UVM_INFO ../slave_agent/apb_slave_mon.sv(107) @ 250: uvm_test_top.env_h.agent_hs_1.mon_hs [apb_slave_mon] Slave-1 transaction sent to scoreboard
 # 
 # ---------- Master Transaction : 4 ----------
 # 
-# UVM_INFO ../env/apb_sb.sv(77) @ 250: uvm_test_top.env_h.sb_h [apb_sb] Data received from slave monitor = 
-# -------------------------------------------
-# Name          Type              Size  Value
-# -------------------------------------------
-# trans_hm      apb_master_trans  -     @1256
-#   PWRITE      integral          1     'h0  
-#   PADDR       integral          8     'h0  
-#   PWDATA      integral          32    'h0  
-#   PSTRB       integral          4     'h0  
-#   PENABLE     integral          1     'h0  
-#   PSEL        da(integral)      0     -    
-#   trans_size  transfer_size_e   2     BYTE 
-#   PREADY      integral          1     'h0  
-#   PRDATA      integral          32    'h0  
-#   PSLVERR     integral          1     'h0  
-#   Direction   string            4     READ 
-#   Trans Size  string            4     BYTE 
-# -------------------------------------------
+# UVM_INFO ../slave_agent/apb_slave_mon.sv(104) @ 330: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard = 
+# -------------------------------------------------
+# Name                 Type             Size  Value
+# -------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1580
+#   PADDR              integral         8     'h0  
+#   PWDATA             integral         32    'h0  
+#   PRDATA             integral         32    'h0  
+#   PSTRB              integral         4     'h0  
+#   PWRITE             integral         1     'h0  
+#   PENABLE            integral         1     'h1  
+#   PREADY             integral         1     'h1  
+#   PSLVERR            integral         1     'h0  
+#   PSEL               da(integral)     0     -    
+#   no_of_wait_cycles  integral         32    'd0  
+#   wait_enable        integral         1     'd0  
+# -------------------------------------------------
 # 
-# UVM_INFO ../env/apb_sb.sv(72) @ 291: uvm_test_top.env_h.sb_h [apb_sb] Data received from master monitor = 
-# -------------------------------------------
-# Name          Type              Size  Value
-# -------------------------------------------
-# trans_hm      apb_master_trans  -     @1426
-#   PWRITE      integral          1     'h0  
-#   PADDR       integral          8     'h21 
-#   PWDATA      integral          32    'h0  
-#   PSTRB       integral          4     'h0  
-#   PENABLE     integral          1     'h1  
-#   PSEL        da(integral)      0     -    
-#   trans_size  transfer_size_e   2     BYTE 
-#   PREADY      integral          1     'h1  
-#   PRDATA      integral          32    'h0  
-#   PSLVERR     integral          1     'h0  
-#   Direction   string            4     READ 
-#   Trans Size  string            4     BYTE 
-# -------------------------------------------
+# UVM_INFO ../env/apb_sb.sv(73) @ 330: uvm_test_top.env_h.sb_h [apb_sb] Data received from master monitor = 
+# --------------------------------------------
+# Name          Type              Size  Value 
+# --------------------------------------------
+# trans_hm      apb_master_trans  -     @1426 
+#   PWRITE      integral          1     'h0   
+#   PADDR       integral          8     'h0   
+#   PWDATA      integral          32    'h0   
+#   PSTRB       integral          4     'h0   
+#   PENABLE     integral          1     'h1   
+#   PSEL        da(integral)      0     -     
+#   trans_size  transfer_size_e   2     BYTE  
+#   PREADY      integral          1     'h1   
+#   PRDATA      integral          32    'hd0a8
+#   PSLVERR     integral          1     'h0   
+#   Direction   string            4     READ  
+#   Trans Size  string            4     BYTE  
+# --------------------------------------------
 # 
-# UVM_INFO ../slave_agent/apb_slave_mon.sv(107) @ 310: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard
+# UVM_INFO ../env/apb_sb.sv(83) @ 330: uvm_test_top.env_h.sb_h [apb_sb] act_data_q = '{53416}
+# UVM_INFO ../env/apb_sb.sv(91) @ 330: uvm_test_top.env_h.sb_h [apb_sb] Data received from slave 0 monitor = 
+# ------------------------------------------------------
+# Name                 Type             Size  Value     
+# ------------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1554     
+#   PADDR              integral         8     'h0       
+#   PWDATA             integral         32    'h96074a7d
+#   PRDATA             integral         32    'h0       
+#   PSTRB              integral         4     'hf       
+#   PWRITE             integral         1     'h1       
+#   PENABLE            integral         1     'h1       
+#   PREADY             integral         1     'h1       
+#   PSLVERR            integral         1     'h0       
+#   PSEL               da(integral)     0     -         
+#   no_of_wait_cycles  integral         32    'd0       
+#   wait_enable        integral         1     'd0       
+# ------------------------------------------------------
+# 
 # 
 # ---------- Master Transaction : 5 ----------
 # 
-# UVM_INFO ../env/apb_sb.sv(77) @ 310: uvm_test_top.env_h.sb_h [apb_sb] Data received from slave monitor = 
-# -------------------------------------------
-# Name          Type              Size  Value
-# -------------------------------------------
-# trans_hm      apb_master_trans  -     @1256
-#   PWRITE      integral          1     'h0  
-#   PADDR       integral          8     'h0  
-#   PWDATA      integral          32    'h0  
-#   PSTRB       integral          4     'h0  
-#   PENABLE     integral          1     'h0  
-#   PSEL        da(integral)      0     -    
-#   trans_size  transfer_size_e   2     BYTE 
-#   PREADY      integral          1     'h0  
-#   PRDATA      integral          32    'h0  
-#   PSLVERR     integral          1     'h0  
-#   Direction   string            4     READ 
-#   Trans Size  string            4     BYTE 
-# -------------------------------------------
+# UVM_INFO ../slave_agent/apb_slave_mon.sv(104) @ 410: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard = 
+# ------------------------------------------------------
+# Name                 Type             Size  Value     
+# ------------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1592     
+#   PADDR              integral         8     'h0       
+#   PWDATA             integral         32    'h695a88ea
+#   PRDATA             integral         32    'h0       
+#   PSTRB              integral         4     'hf       
+#   PWRITE             integral         1     'h1       
+#   PENABLE            integral         1     'h1       
+#   PREADY             integral         1     'h1       
+#   PSLVERR            integral         1     'h0       
+#   PSEL               da(integral)     0     -         
+#   no_of_wait_cycles  integral         32    'd0       
+#   wait_enable        integral         1     'd0       
+# ------------------------------------------------------
 # 
-# UVM_INFO ../env/apb_sb.sv(72) @ 351: uvm_test_top.env_h.sb_h [apb_sb] Data received from master monitor = 
+# 
+# ---------- Master Transaction : 6 ----------
+# 
+# UVM_INFO ../slave_agent/apb_slave_mon.sv(104) @ 470: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard = 
+# ------------------------------------------------------
+# Name                 Type             Size  Value     
+# ------------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1604     
+#   PADDR              integral         8     'h0       
+#   PWDATA             integral         32    'hf54ad4a2
+#   PRDATA             integral         32    'h0       
+#   PSTRB              integral         4     'hf       
+#   PWRITE             integral         1     'h1       
+#   PENABLE            integral         1     'h1       
+#   PREADY             integral         1     'h1       
+#   PSLVERR            integral         1     'h0       
+#   PSEL               da(integral)     0     -         
+#   no_of_wait_cycles  integral         32    'd0       
+#   wait_enable        integral         1     'd0       
+# ------------------------------------------------------
+# 
+# 
+# ---------- Master Transaction : 7 ----------
+# 
+# UVM_INFO ../slave_agent/apb_slave_mon.sv(104) @ 610: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard = 
+# -------------------------------------------------
+# Name                 Type             Size  Value
+# -------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1616
+#   PADDR              integral         8     'h0  
+#   PWDATA             integral         32    'h0  
+#   PRDATA             integral         32    'h0  
+#   PSTRB              integral         4     'h0  
+#   PWRITE             integral         1     'h0  
+#   PENABLE            integral         1     'h1  
+#   PREADY             integral         1     'h1  
+#   PSLVERR            integral         1     'h0  
+#   PSEL               da(integral)     0     -    
+#   no_of_wait_cycles  integral         32    'd0  
+#   wait_enable        integral         1     'd0  
+# -------------------------------------------------
+# 
+# UVM_INFO ../env/apb_sb.sv(73) @ 610: uvm_test_top.env_h.sb_h [apb_sb] Data received from master monitor = 
 # ------------------------------------------------
 # Name          Type              Size  Value     
 # ------------------------------------------------
 # trans_hm      apb_master_trans  -     @1426     
-#   PWRITE      integral          1     'h1       
-#   PADDR       integral          8     'ha4      
-#   PWDATA      integral          32    'h695a88ea
+#   PWRITE      integral          1     'h0       
+#   PADDR       integral          8     'h0       
+#   PWDATA      integral          32    'h0       
 #   PSTRB       integral          4     'h0       
 #   PENABLE     integral          1     'h1       
 #   PSEL        da(integral)      0     -         
 #   trans_size  transfer_size_e   2     BYTE      
 #   PREADY      integral          1     'h1       
-#   PRDATA      integral          32    'h0       
+#   PRDATA      integral          32    'hf54ad4a2
 #   PSLVERR     integral          1     'h0       
-#   Direction   string            5     WRITE     
+#   Direction   string            4     READ      
 #   Trans Size  string            4     BYTE      
 # ------------------------------------------------
 # 
-# UVM_INFO ../slave_agent/apb_slave_mon.sv(107) @ 370: uvm_test_top.env_h.agent_hs_1.mon_hs [apb_slave_mon] Slave-1 transaction sent to scoreboard
-# UVM_INFO ../env/apb_sb.sv(77) @ 370: uvm_test_top.env_h.sb_h [apb_sb] Data received from slave monitor = 
-# -------------------------------------------
-# Name          Type              Size  Value
-# -------------------------------------------
-# trans_hm      apb_master_trans  -     @1256
-#   PWRITE      integral          1     'h0  
-#   PADDR       integral          8     'h0  
-#   PWDATA      integral          32    'h0  
-#   PSTRB       integral          4     'h0  
-#   PENABLE     integral          1     'h0  
-#   PSEL        da(integral)      0     -    
-#   trans_size  transfer_size_e   2     BYTE 
-#   PREADY      integral          1     'h0  
-#   PRDATA      integral          32    'h0  
-#   PSLVERR     integral          1     'h0  
-#   Direction   string            4     READ 
-#   Trans Size  string            4     BYTE 
-# -------------------------------------------
+# UVM_INFO ../env/apb_sb.sv(83) @ 610: uvm_test_top.env_h.sb_h [apb_sb] act_data_q = '{53416, 4115322018}
+# UVM_INFO ../env/apb_sb.sv(91) @ 610: uvm_test_top.env_h.sb_h [apb_sb] Data received from slave 0 monitor = 
+# ------------------------------------------------------
+# Name                 Type             Size  Value     
+# ------------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1568     
+#   PADDR              integral         8     'h0       
+#   PWDATA             integral         32    'h5cfbd0a8
+#   PRDATA             integral         32    'h0       
+#   PSTRB              integral         4     'h3       
+#   PWRITE             integral         1     'h1       
+#   PENABLE            integral         1     'h1       
+#   PREADY             integral         1     'h1       
+#   PSLVERR            integral         1     'h0       
+#   PSEL               da(integral)     0     -         
+#   no_of_wait_cycles  integral         32    'd0       
+#   wait_enable        integral         1     'd0       
+# ------------------------------------------------------
 # 
-# UVM_INFO ../slave_agent/apb_slave_mon.sv(121) @ 370: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] mem_model[0x2d] 	= 0x96074a7d
-# UVM_INFO ../slave_agent/apb_slave_mon.sv(121) @ 370: uvm_test_top.env_h.agent_hs_1.mon_hs [apb_slave_mon] mem_model[0x70] 	= 0xd0a8
-# UVM_INFO ../slave_agent/apb_slave_mon.sv(121) @ 370: uvm_test_top.env_h.agent_hs_1.mon_hs [apb_slave_mon] mem_model[0xa4] 	= 0x695a88ea
-# UVM_INFO ../slave_agent/apb_slave_mon.sv(121) @ 370: uvm_test_top.env_h.agent_hs_2.mon_hs [apb_slave_mon] mem_model[0xc1] 	= 0xeb203ca4
+# 
+# ---------- Master Transaction : 8 ----------
+# 
+# UVM_INFO ../slave_agent/apb_slave_mon.sv(104) @ 710: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard = 
+# -------------------------------------------------
+# Name                 Type             Size  Value
+# -------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1628
+#   PADDR              integral         8     'h0  
+#   PWDATA             integral         32    'h0  
+#   PRDATA             integral         32    'h0  
+#   PSTRB              integral         4     'h0  
+#   PWRITE             integral         1     'h0  
+#   PENABLE            integral         1     'h1  
+#   PREADY             integral         1     'h1  
+#   PSLVERR            integral         1     'h0  
+#   PSEL               da(integral)     0     -    
+#   no_of_wait_cycles  integral         32    'd0  
+#   wait_enable        integral         1     'd0  
+# -------------------------------------------------
+# 
+# UVM_INFO ../env/apb_sb.sv(73) @ 710: uvm_test_top.env_h.sb_h [apb_sb] Data received from master monitor = 
+# ------------------------------------------------
+# Name          Type              Size  Value     
+# ------------------------------------------------
+# trans_hm      apb_master_trans  -     @1426     
+#   PWRITE      integral          1     'h0       
+#   PADDR       integral          8     'h0       
+#   PWDATA      integral          32    'h0       
+#   PSTRB       integral          4     'h0       
+#   PENABLE     integral          1     'h1       
+#   PSEL        da(integral)      0     -         
+#   trans_size  transfer_size_e   2     BYTE      
+#   PREADY      integral          1     'h1       
+#   PRDATA      integral          32    'hf54ad4a2
+#   PSLVERR     integral          1     'h0       
+#   Direction   string            4     READ      
+#   Trans Size  string            4     BYTE      
+# ------------------------------------------------
+# 
+# UVM_INFO ../env/apb_sb.sv(83) @ 710: uvm_test_top.env_h.sb_h [apb_sb] act_data_q = '{53416, 4115322018, 4115322018}
+# UVM_INFO ../env/apb_sb.sv(91) @ 710: uvm_test_top.env_h.sb_h [apb_sb] Data received from slave 0 monitor = 
+# -------------------------------------------------
+# Name                 Type             Size  Value
+# -------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1580
+#   PADDR              integral         8     'h0  
+#   PWDATA             integral         32    'h0  
+#   PRDATA             integral         32    'h0  
+#   PSTRB              integral         4     'h0  
+#   PWRITE             integral         1     'h0  
+#   PENABLE            integral         1     'h1  
+#   PREADY             integral         1     'h1  
+#   PSLVERR            integral         1     'h0  
+#   PSEL               da(integral)     0     -    
+#   no_of_wait_cycles  integral         32    'd0  
+#   wait_enable        integral         1     'd0  
+# -------------------------------------------------
+# 
+# UVM_INFO ../env/apb_sb.sv(112) @ 710: uvm_test_top.env_h.sb_h [apb_sb] exp_data_q = '{53416}
+# 
+# ---------- Master Transaction : 9 ----------
+# 
+# UVM_INFO ../slave_agent/apb_slave_mon.sv(104) @ 790: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard = 
+# ------------------------------------------------------
+# Name                 Type             Size  Value     
+# ------------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1640     
+#   PADDR              integral         8     'h0       
+#   PWDATA             integral         32    'h8015efa5
+#   PRDATA             integral         32    'h0       
+#   PSTRB              integral         4     'hf       
+#   PWRITE             integral         1     'h1       
+#   PENABLE            integral         1     'h1       
+#   PREADY             integral         1     'h1       
+#   PSLVERR            integral         1     'h0       
+#   PSEL               da(integral)     0     -         
+#   no_of_wait_cycles  integral         32    'd0       
+#   wait_enable        integral         1     'd0       
+# ------------------------------------------------------
+# 
+# 
+# ---------- Master Transaction : 10 ----------
+# 
+# UVM_INFO ../slave_agent/apb_slave_mon.sv(104) @ 850: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] Slave-0 transaction sent to scoreboard = 
+# ------------------------------------------------------
+# Name                 Type             Size  Value     
+# ------------------------------------------------------
+# trans_hs             apb_slave_trans  -     @1652     
+#   PADDR              integral         8     'h0       
+#   PWDATA             integral         32    'heb617489
+#   PRDATA             integral         32    'h0       
+#   PSTRB              integral         4     'hf       
+#   PWRITE             integral         1     'h1       
+#   PENABLE            integral         1     'h1       
+#   PREADY             integral         1     'h1       
+#   PSLVERR            integral         1     'h0       
+#   PSEL               da(integral)     0     -         
+#   no_of_wait_cycles  integral         32    'd0       
+#   wait_enable        integral         1     'd0       
+# ------------------------------------------------------
+# 
 # 
 # ---------------------------------------
 # 	    SIMULATION REPORT 		
@@ -368,19 +497,21 @@
 # 	    COVERAGE REPORT 		
 # ---------------------------------------
 # ---------------------------------------
+# UVM_INFO ../slave_agent/apb_slave_mon.sv(113) @ 850: uvm_test_top.env_h.agent_hs_0.mon_hs [apb_slave_mon] mem_model[0] = 0xeb617489
+# UVM_INFO ../env/apb_sb.sv(134) @ 850: uvm_test_top.env_h.sb_h [apb_sb] mem_model[0] = 0x0000d0a8
 # 
 # --- UVM Report Summary ---
 # 
 # ** Report counts by severity
-# UVM_INFO :   22
+# UVM_INFO :   26
 # UVM_WARNING :    0
 # UVM_ERROR :    0
 # UVM_FATAL :    0
 # ** Report counts by id
-# [apb_sb]    10
+# [apb_sb]    12
 # [apb_slave_config]     3
-# [apb_slave_mon]     9
+# [apb_slave_mon]    11
 # ** Note: $finish    : C:/questasim64_10.7c/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
-#    Time: 370 ns  Iteration: 64  Instance: /apb_top
-# End time: 18:43:26 on Jun 04,2026, Elapsed time: 0:00:01
+#    Time: 850 ns  Iteration: 64  Instance: /apb_top
+# End time: 14:47:38 on Jun 05,2026, Elapsed time: 0:00:02
 # Errors: 0, Warnings: 0
