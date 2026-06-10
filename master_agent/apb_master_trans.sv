@@ -7,13 +7,12 @@ class apb_master_trans extends uvm_sequence_item;
     // Static tracking variables
     // --------------------------------------------------------
     static int                       current_trans_m = 1;
-    static bit [`ADDR_WIDTH-1:0]     prev_addr;
 
     // --------------------------------------------------------
     // Randomized signals
     // --------------------------------------------------------
     rand bit                         PWRITE;
-    randc bit [`ADDR_WIDTH-1:0]      PADDR;
+    rand bit [`ADDR_WIDTH-1:0]      PADDR;
     rand bit [`DATA_WIDTH-1:0]       PWDATA;
     rand transfer_size_e             trans_size;
 
@@ -23,16 +22,16 @@ class apb_master_trans extends uvm_sequence_item;
     // PSEL computed by populate_psel() in driver — never randomize
     // PSTRB computed in post_randomize via strobe_calc()
     // --------------------------------------------------------
-    bit                              PENABLE;
-    bit [`STRB_WIDTH-1:0]            PSTRB;
-    bit                              PSEL[];
+    rand bit PENABLE;
+    logic [`STRB_WIDTH-1:0]            PSTRB;
+    logic                              PSEL[];
 
     // --------------------------------------------------------
     // Response signals — driven by slave, captured by driver
     // --------------------------------------------------------
-    bit                              PREADY;
-    bit [`DATA_WIDTH-1:0]            PRDATA;
-    bit                              PSLVERR;
+    logic                              PREADY;
+    logic [`DATA_WIDTH-1:0]            PRDATA;
+    logic                              PSLVERR;
 
     // --------------------------------------------------------
     // Factory & field registration
@@ -50,10 +49,6 @@ class apb_master_trans extends uvm_sequence_item;
         `uvm_field_int       (PSLVERR,   UVM_ALL_ON | UVM_HEX)
     `uvm_object_utils_end
 
-    // --------------------------------------------------------
-    // Constraints
-    // --------------------------------------------------------
-
     // Transfer size distribution — WORD weighted [favored] heavily
     constraint c_trans_size {
         trans_size dist {
@@ -65,8 +60,11 @@ class apb_master_trans extends uvm_sequence_item;
 
     // Read/write distribution
     constraint c_pwrite {
-        PWRITE dist {1 := 50, 0 := 50};
+        PWRITE dist {1 := 80, 0 := 20};
     }
+    
+    // PENABLE constraint
+    constraint c_penable {soft PENABLE == 1;}
 
     // PWDATA must be 0 on reads — no point [no meaning] driving data during a read
     constraint c_pwdata {
@@ -76,28 +74,20 @@ class apb_master_trans extends uvm_sequence_item;
 
     // Address must stay within valid range
     constraint c_paddr {
-        PADDR inside {[0 : (2**`ADDR_WIDTH)-1]};
+        soft PADDR inside {[0 : (2**`ADDR_WIDTH)-1]};
     }
 
-    // Transfer size and PWRITE must be solved before PSTRB is computed
-    constraint c_solve_order {
-        solve PWRITE     before trans_size;
-        solve trans_size before PWDATA;
-    }
+    // // Transfer size and PWRITE must be solved before PSTRB is computed
+    // constraint c_solve_order {
+    //     solve PWRITE     before trans_size;
+    //     solve trans_size before PWDATA;
+    // }
 
     // --------------------------------------------------------
     // Constructor
     // --------------------------------------------------------
     function new(string name = "apb_master_trans");
         super.new(name);
-    endfunction
-
-    // --------------------------------------------------------
-    // pre_randomize — called just before randomize()
-    // --------------------------------------------------------
-    function void pre_randomize();
-        // store previous address for debug tracking [keeping tabs on history]
-        prev_addr = PADDR;
     endfunction
 
     // --------------------------------------------------------

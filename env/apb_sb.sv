@@ -21,6 +21,7 @@ class apb_sb extends uvm_scoreboard;
     int no_of_rd;
     int no_of_rd_passed;
     int no_of_rd_failed;
+    int no_of_empty_read;
     int total_no_of_ops;
 
     //Analysis FIFO declaration
@@ -111,8 +112,11 @@ class apb_sb extends uvm_scoreboard;
             begin
                 if(!trans_hm.PWRITE)
                 begin
-                    act_data_q.push_back(trans_hm.PRDATA);
-                    `uvm_info(get_type_name(), $sformatf("act_data_q = %p", act_data_q), UVM_MEDIUM)
+                    if(!$isunknown(trans_hm.PRDATA))
+                    begin
+                        act_data_q.push_back(trans_hm.PRDATA);
+                        `uvm_info(get_type_name(), $sformatf("act_data_q = %p", act_data_q), UVM_MEDIUM)
+                    end
                 end
             end
         end
@@ -141,9 +145,18 @@ class apb_sb extends uvm_scoreboard;
             end
             else
             begin
-                exp_data_q.push_back(mem_model[trans_hs.PADDR]);
-                `uvm_info(get_type_name(), $sformatf("exp_data_q = %p", exp_data_q), UVM_MEDIUM)
-                no_of_rd++;
+                if(mem_model.exists(trans_hs.PADDR))
+                begin
+                    exp_data_q.push_back(mem_model[trans_hs.PADDR]);
+                    `uvm_info(get_type_name(), $sformatf("exp_data_q = %p", exp_data_q), UVM_MEDIUM)
+                    no_of_rd++;
+                end
+                else
+                begin
+                    `uvm_info(get_type_name(), "Data has not been written at desired location", UVM_MEDIUM)
+                    no_of_empty_read++;
+                    no_of_rd++;
+                end
             end
             total_no_of_ops++;
         end
@@ -160,6 +173,7 @@ class apb_sb extends uvm_scoreboard;
         $display("---------------------------------------");
         $display("MATCHED = %0d", no_of_rd_passed);
         $display("MIS-MATCHED = %0d", no_of_rd_failed);
+        $display("READ REQUEST AT EMPTY LOCATION = %0d", no_of_empty_read);
         $display("---------------------------------------\n\t    COVERAGE REPORT \t\t\n---------------------------------------");
         // $display("Master IP Coverage = %.2f",apb_cvg_master.get_coverage());
         // $display("Slave  IP Coverage = %.2f",apb_cvg_slave.get_coverage());

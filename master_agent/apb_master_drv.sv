@@ -209,7 +209,7 @@ class apb_master_drv extends uvm_driver #(apb_master_trans);
         // ACCESS PHASE — assert PENABLE, wait for PREADY
         // --------------------------------------------------------
         $cast(transfer_state, 2);
-        vif.mas_drv_cb.PENABLE <= 1'b1;
+        vif.mas_drv_cb.PENABLE <= req.PENABLE;
 
         // Wait for PREADY with timeout guard
         fork : F_PREADY

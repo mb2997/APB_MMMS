@@ -78,7 +78,7 @@ class apb_slave_drv extends uvm_driver #(apb_slave_trans);
     // ----------------------------------------------------------------
     task idle_outputs();
         vif.slv_drv_cb.PREADY  <= 1'b0;
-        vif.slv_drv_cb.PRDATA  <= '0;
+        vif.slv_drv_cb.PRDATA  <= 'hz;
         vif.slv_drv_cb.PSLVERR <= 1'b0;
     endtask
 

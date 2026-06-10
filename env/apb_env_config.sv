@@ -3,16 +3,10 @@
 
 class apb_env_config extends uvm_object;
 
-    // --------------------------------------------------------
-    // Fields
-    // --------------------------------------------------------
     int unsigned      no_of_slaves;    //  unsigned — can never be negative
     apb_master_config config_hm;       // master agent config
     apb_slave_config  config_hs[];     // one per slave — sized at test level
 
-    // --------------------------------------------------------
-    // Factory registration with field automation
-    // --------------------------------------------------------
     `uvm_object_utils_begin(apb_env_config)
         `uvm_field_int         (no_of_slaves, UVM_ALL_ON | UVM_DEC)
         `uvm_field_object      (config_hm,    UVM_ALL_ON)
@@ -23,11 +17,6 @@ class apb_env_config extends uvm_object;
         super.new(name);
     endfunction
 
-    // --------------------------------------------------------
-    // check_config
-    // Call from start_of_simulation_phase to catch [detect]
-    // misconfiguration [wrong setup] before simulation runs
-    // --------------------------------------------------------
     function void check_config();
 
         // no_of_slaves must be at least 1
@@ -58,7 +47,7 @@ class apb_env_config extends uvm_object;
                     $sformatf("config_hs[%0d] is null — not created", i))
         end
 
-        // address ranges must not overlap [two slaves cannot own the same address]
+        // address ranges must not overlap, two slaves cannot own the same address
         foreach(config_hs[i]) begin
             foreach(config_hs[j]) begin
                 if(i == j) continue;   // skip [don't compare] same slave
@@ -72,15 +61,10 @@ class apb_env_config extends uvm_object;
         end
 
         `uvm_info(get_type_name(),
-            $sformatf("Config check passed | slaves=%0d | master=%0s",
-                       no_of_slaves, config_hm.get_name()),
-            UVM_MEDIUM)
+            $sformatf("Config check passed | slaves=%0d | master=%0s", no_of_slaves, config_hm.get_name()), UVM_MEDIUM)
 
     endfunction
 
-    // --------------------------------------------------------
-    // print_config — quick summary [snapshot] of full config
-    // --------------------------------------------------------
     function void print_config();
         `uvm_info(get_type_name(),
             $sformatf("=== ENV CONFIG SUMMARY ===\n No of Slaves : %0d",

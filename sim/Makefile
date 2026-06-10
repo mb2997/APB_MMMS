@@ -17,7 +17,7 @@ help:
 	@echo =================================================================================
 
 clean:
-	del /Q transcript work
+	del transcript
 lib :
 	vlib work
 	
@@ -27,19 +27,19 @@ cmp :
 sim :
 	vsim -vopt $(TBModule) -c -do "run -all; exit"
 
-all : lib cmp sim
+all : clean lib cmp sim
 
 run-tc1 : 
-	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_TESTNAME=apb_low_addr_range_test
+	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_TESTNAME=apb_single_slave_test
 
 run-tc2 : 
-	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_TESTNAME=apb_high_addr_range_test
+	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_TESTNAME=apb_multi_slave_test
 
 run-tc3 : 
-	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_TESTNAME=apb_mid_reset_test
+	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_TESTNAME=apb_single_slave_min_max_mid_addr_test
 
 run-tc4 : 
-	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_TESTNAME=apb_pready_wait_timeout_test
+	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_TESTNAME=apb_multi_slave_min_max_mid_addr_test
 
 run-tc5 : 
 	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_TESTNAME=apb_high_data_range_test
@@ -47,11 +47,11 @@ run-tc5 :
 run-tc6 : 
 	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_TESTNAME=apb_low_data_range_test
 
-tc1 : lib cmp run-tc1
+tc1 : clean lib cmp run-tc1
 
-tc2 : lib cmp run-tc2
+tc2 : clean lib cmp run-tc2
 
-tc3 : lib cmp run-tc3
+tc3 : clean lib cmp run-tc3
 
 tc4 : lib cmp run-tc4
 

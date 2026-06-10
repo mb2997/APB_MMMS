@@ -42,6 +42,7 @@ class apb_base_test extends uvm_test;
             config_ht.config_he.config_hs[i].is_active  = UVM_ACTIVE;
         end
 
+        uvm_config_db #(apb_test_config)::set(this, "*", "apb_test_config", config_ht);
         uvm_config_db #(apb_env_config)::set(this, "*", "apb_env_config", config_ht.config_he);
     endfunction
 

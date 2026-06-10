@@ -30,4 +30,12 @@ module apb_top();
         run_test("apb_base_test");  
     end
 
+    // Assertions
+    property one_bit_asserted_in_psel;
+        @(posedge clk) disable iff (!inf.PRESETn)
+        (inf.PENABLE && (!$isunknown(inf.PADDR))) |-> $onehot(inf.PSEL);
+    endproperty
+
+    assert property (one_bit_asserted_in_psel);
+
 endmodule : apb_top

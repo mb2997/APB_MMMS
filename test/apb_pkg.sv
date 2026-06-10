@@ -2,7 +2,7 @@
 
 package apb_pkg;
 
-    int no_of_trans = 5;
+    int no_of_trans = 10;
 
     `include "../top/apb_defs.sv"
 
@@ -19,43 +19,49 @@ package apb_pkg;
 
     `include "../master_agent/apb_master_config.sv"
     `include "../slave_agent/apb_slave_config.sv"
+    `include "apb_test_config.sv"
+    `include "../env/apb_env_config.sv"
 
     `include "../master_agent/apb_master_trans.sv"
     `include "../slave_agent/apb_slave_trans.sv"
     
-    `include "../master_agent/apb_master_seqr.sv"
-    `include "../slave_agent/apb_slave_seqr.sv"
-    
     `include "../master_agent/apb_master_seqs.sv"
     `include "../slave_agent/apb_slave_seqs.sv"
 
+    `include "../master_agent/apb_master_seqr.sv"
+    `include "../slave_agent/apb_slave_seqr.sv"
+    
+
     // //Testcase sequences
-    // `include "apb_low_addr_range_seqs.sv"
+    `include "/master_tc/apb_single_slave_rand_rw_seqs.sv"
+    `include "/master_tc/apb_multi_slave_rand_rw_seqs.sv"
+    `include "/master_tc/apb_single_slave_min_max_mid_addr_seqs.sv"
+    `include "/master_tc/apb_multi_slave_min_max_mid_addr_seqs.sv"
     // `include "apb_high_addr_range_seqs.sv"
     // `include "apb_mid_reset_seqs.sv"
     // `include "apb_pready_wait_timeout_seqs.sv"
     // `include "apb_high_data_range_seqs.sv"
     // `include "apb_low_data_range_seqs.sv"
     
-    `include "../master_agent/apb_master_mon.sv"
-    `include "../slave_agent/apb_slave_mon.sv"
-    
     `include "../master_agent/apb_master_drv.sv"
     `include "../slave_agent/apb_slave_drv.sv"
+    
+    `include "../master_agent/apb_master_mon.sv"
+    `include "../slave_agent/apb_slave_mon.sv"
     
     `include "../master_agent/apb_master_agent.sv"
     `include "../slave_agent/apb_slave_agent.sv"
     
-    
     `include "../env/apb_sb.sv"
-    `include "../env/apb_env_config.sv"
     `include "../env/apb_env.sv"
     
-    `include "apb_test_config.sv"
     `include "apb_base_test.sv"
     
     // //Testcases Test
-    // `include "apb_low_addr_range_test.sv"
+    `include "/master_tc/apb_single_slave_rand_rw_test.sv"
+    `include "/master_tc/apb_multi_slave_rand_rw_test.sv"
+    `include "/master_tc/apb_single_slave_min_max_mid_addr_test.sv"
+    `include "/master_tc/apb_multi_slave_min_max_mid_addr_test.sv"
     // `include "apb_high_addr_range_test.sv"
     // `include "apb_mid_reset_test.sv"
     // `include "apb_pready_wait_timeout_test.sv"
