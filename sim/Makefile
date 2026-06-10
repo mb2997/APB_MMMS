@@ -42,10 +42,10 @@ run-tc4 :
 	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_TESTNAME=apb_multi_slave_min_max_mid_addr_test
 
 run-tc5 : 
-	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_TESTNAME=apb_high_data_range_test
+	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_TESTNAME=apb_multi_slave_raw_test
 
 run-tc6 : 
-	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_TESTNAME=apb_low_data_range_test
+	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_TESTNAME=apb_multi_slave_b2b_rw_test
 
 tc1 : clean lib cmp run-tc1
 
@@ -53,8 +53,8 @@ tc2 : clean lib cmp run-tc2
 
 tc3 : clean lib cmp run-tc3
 
-tc4 : lib cmp run-tc4
+tc4 : clean lib cmp run-tc4
 
-tc5 : lib cmp run-tc5
+tc5 : clean lib cmp run-tc5
 
-tc6 : lib cmp run-tc6
+tc6 : clean lib cmp run-tc6
