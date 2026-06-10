@@ -88,12 +88,9 @@ class apb_slave_drv extends uvm_driver #(apb_slave_trans);
     // ----------------------------------------------------------------
     task drive_to_inf();
 
-        // Wait for this slave's PSEL to be asserted [go high]
-        // config_hs.slave_id tells us which PSEL index belongs to this slave
         @(vif.slv_drv_cb);
         wait(vif.slv_drv_cb.PSEL[config_hs.slave_id] === 1'b1);
 
-        // Wait for PENABLE — access phase started [master is ready]
         wait(vif.slv_drv_cb.PENABLE === 1'b1);
 
         // Insert wait cycles [simulate slave latency] before asserting PREADY

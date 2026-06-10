@@ -47,6 +47,12 @@ run-tc5 :
 run-tc6 : 
 	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_TESTNAME=apb_multi_slave_b2b_rw_test
 
+run-tc7 : 
+	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_TESTNAME=apb_min_pready_test
+
+run-tc8 : 
+	vsim -vopt $(TBModule) -c -do "run -all; exit" +UVM_TESTNAME=apb_max_pready_test
+
 tc1 : clean lib cmp run-tc1
 
 tc2 : clean lib cmp run-tc2
@@ -58,3 +64,7 @@ tc4 : clean lib cmp run-tc4
 tc5 : clean lib cmp run-tc5
 
 tc6 : clean lib cmp run-tc6
+
+tc7 : clean lib cmp run-tc7
+
+tc8 : clean lib cmp run-tc8

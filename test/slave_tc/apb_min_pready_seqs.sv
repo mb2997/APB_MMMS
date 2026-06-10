@@ -1,38 +1,41 @@
-`ifndef APB_SINGLE_SLAVE_RAND_RW_SEQS
-`define APB_SINGLE_SLAVE_RAND_RW_SEQS
+`ifndef APB_MIN_PREADY_SEQS
+`define APB_MIN_PREADY_SEQS
 
-class apb_single_slave_rand_rw_seqs extends apb_master_seqs;
+class apb_min_pready_seqs extends apb_slave_seqs;
 
-    `uvm_object_utils(apb_single_slave_rand_rw_seqs)
+    `uvm_object_utils(apb_min_pready_seqs)
 
-    function new (string name = "apb_single_slave_rand_rw_seqs");
+    function new (string name = "apb_min_pready_seqs");
         super.new(name);
     endfunction
 
     task body();
 
-        apb_master_trans trans_hm;
+        apb_slave_trans trans_hs;
 
         repeat(no_of_trans) begin
 
-            $display("\n---------- apb_single_slave_rand_rw_seqs transaction : %0d ----------\n", apb_master_trans::current_trans_m);
+            $display("\n---------- apb_min_pready_seqs transaction : %0d ----------\n", apb_slave_trans::current_trans_s);
 
-            trans_hm = apb_master_trans::type_id::create("trans_hm");
+            trans_hs = apb_slave_trans::type_id::create("trans_hs");
+
+            trans_hs.c_wait_cycles.constraint_mode(0);
+            trans_hs.c_wait_enable.constraint_mode(0);
 
             //  correct UVM handshake order
-            start_item(trans_hm);
+            start_item(trans_hs);
 
             //  randomize after start_item — inline constraint as example
-            if(!trans_hm.randomize())
-                `uvm_fatal(get_type_name(), "Randomization failed for master trans")
+            if(!trans_hs.randomize() with {wait_enable == 1; no_of_wait_cycles == 0;})
+                `uvm_fatal(get_type_name(), "Randomization failed for slave trans")
 
-            finish_item(trans_hm);
+            finish_item(trans_hs);
 
             `uvm_info(get_type_name(),
-            $sformatf("Transaction-%0d sent from MASTER SEQS =\n%s", apb_master_trans::current_trans_m, trans_hm.sprint()), UVM_MEDIUM)
+            $sformatf("Transaction-%0d sent from MASTER SEQS =\n%s", apb_slave_trans::current_trans_s, trans_hs.sprint()), UVM_MEDIUM)
 
             //  increment after finish_item — transaction is done [fully sent]
-            apb_master_trans::current_trans_m++;
+            apb_slave_trans::current_trans_s++;
 
         end
 

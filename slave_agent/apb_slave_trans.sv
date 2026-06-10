@@ -3,14 +3,8 @@
 
 class apb_slave_trans extends uvm_sequence_item;
 
-    // --------------------------------------------------------
-    // Static counter
-    // --------------------------------------------------------
     static int current_trans_s = 1;
 
-    // --------------------------------------------------------
-    // APB signals — sampled [captured] by monitor from interface
-    // --------------------------------------------------------
     logic [`ADDR_WIDTH-1:0] PADDR;
     logic [`DATA_WIDTH-1:0] PWDATA;
     logic [`DATA_WIDTH-1:0] PRDATA;
@@ -21,15 +15,8 @@ class apb_slave_trans extends uvm_sequence_item;
     logic PSLVERR;   //  added — slave error response
     logic PSEL[];    //  added — which slave selected
 
-    // --------------------------------------------------------
-    // Randomized slave behaviour fields
-    // --------------------------------------------------------
     rand int unsigned no_of_wait_cycles;   // how many cycles PREADY stays low
     rand logic wait_enable;         // 0=respond immediately, 1=insert waits
-
-    // --------------------------------------------------------
-    // Constraints
-    // --------------------------------------------------------
 
     // solve wait_enable first — it gates [controls] no_of_wait_cycles
     constraint c_solve_order {
@@ -49,9 +36,6 @@ class apb_slave_trans extends uvm_sequence_item;
         wait_enable dist {1'b0 := 70, 1'b1 := 30};
     }
 
-    // --------------------------------------------------------
-    // Factory registration and field automation
-    // --------------------------------------------------------
     `uvm_object_utils_begin(apb_slave_trans)
         `uvm_field_int       (PADDR,            UVM_ALL_ON | UVM_HEX)
         `uvm_field_int       (PWDATA,           UVM_ALL_ON | UVM_HEX)

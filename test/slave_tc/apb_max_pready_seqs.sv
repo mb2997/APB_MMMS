@@ -1,51 +1,44 @@
-`ifndef APB_SINGLE_SLAVE_RAND_RW_TEST
-`define APB_SINGLE_SLAVE_RAND_RW_TEST
+`ifndef APB_MAX_PREADY_SEQS
+`define APB_MAX_PREADY_SEQS
 
-class apb_single_slave_rand_rw_test extends apb_base_test;
+class apb_max_pready_seqs extends apb_slave_seqs;
 
-    `uvm_component_utils(apb_single_slave_rand_rw_test)
+    `uvm_object_utils(apb_max_pready_seqs)
 
-    apb_single_slave_rand_rw_seqs single_slv_seq;
-
-    function new(string name = "apb_single_slave_rand_rw_test", uvm_component parent = null);
-        super.new(name, parent);
-        config_ht.no_of_slaves = 1;
+    function new (string name = "apb_max_pready_seqs");
+        super.new(name);
     endfunction
 
-    function void build_phase (uvm_phase phase);
-        super.build_phase(phase);
-        single_slv_seq = apb_single_slave_rand_rw_seqs :: type_id :: create("single_slv_seq");
-    endfunction
+    task body();
 
-    task run_phase(uvm_phase phase);
-        phase.raise_objection(this);
-        fork
-            begin
-                //  Step 1 — spawn all ACTIVE slave sequences in the background
-                foreach (env_h.agent_hs[i]) begin
-                    automatic int ai = i;
-                    if (config_ht.config_he.config_hs[ai].is_active == UVM_ACTIVE) begin
-                        fork
-                            begin
-                                // capture handle INSIDE the thread so it is always valid
-                                // slave_procs[ai] = process::self();
-                                seqs_hs[ai].start(env_h.agent_hs[ai].seqr_hs);
-                            end
-                        join_none
-                    end
-                end
-            end
+        apb_slave_trans trans_hs;
 
-            begin
-                //  Step 2 — run master in the foreground; blocks until all
-                single_slv_seq.start(env_h.agent_hm.seqr_hm);
-                `uvm_info(get_type_name(), "Master sequence complete — stopping simulation", UVM_MEDIUM)
-            end
-        join
-        //  Step 3 — drop objection — simulation ends cleanly
-        phase.phase_done.set_drain_time(this, 20);
-        phase.drop_objection(this);
-        `uvm_info(get_type_name(), "Objection dropped — run phase complete", UVM_MEDIUM)
+        repeat(no_of_trans) begin
+
+            $display("\n---------- apb_max_pready_seqs transaction : %0d ----------\n", apb_slave_trans::current_trans_s);
+
+            trans_hs = apb_slave_trans::type_id::create("trans_hs");
+
+            trans_hs.c_wait_cycles.constraint_mode(0);
+            trans_hs.c_wait_enable.constraint_mode(0);
+
+            //  correct UVM handshake order
+            start_item(trans_hs);
+
+            //  randomize after start_item — inline constraint as example
+            if(!trans_hs.randomize() with {wait_enable == 1; no_of_wait_cycles == `PREADY_MAX_WAIT-3;})
+                `uvm_fatal(get_type_name(), "Randomization failed for slave trans")
+
+            finish_item(trans_hs);
+
+            `uvm_info(get_type_name(),
+            $sformatf("Transaction-%0d sent from MASTER SEQS =\n%s", apb_slave_trans::current_trans_s, trans_hs.sprint()), UVM_MEDIUM)
+
+            //  increment after finish_item — transaction is done [fully sent]
+            apb_slave_trans::current_trans_s++;
+
+        end
+
     endtask
 
 endclass
