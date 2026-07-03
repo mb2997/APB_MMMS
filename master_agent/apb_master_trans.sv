@@ -3,39 +3,21 @@
 
 class apb_master_trans extends uvm_sequence_item;
 
-    // --------------------------------------------------------
-    // Static tracking variables
-    // --------------------------------------------------------
     static int                       current_trans_m = 1;
 
-    // --------------------------------------------------------
-    // Randomized signals
-    // --------------------------------------------------------
     rand bit                         PWRITE;
     rand bit [`ADDR_WIDTH-1:0]      PADDR;
     rand bit [`DATA_WIDTH-1:0]       PWDATA;
     rand transfer_size_e             trans_size;
 
-    // --------------------------------------------------------
-    // Non-random signals
-    // Driver controls PENABLE — never randomize it
-    // PSEL computed by populate_psel() in driver — never randomize
-    // PSTRB computed in post_randomize via strobe_calc()
-    // --------------------------------------------------------
     rand bit PENABLE;
     logic [`STRB_WIDTH-1:0]            PSTRB;
     logic                              PSEL[];
 
-    // --------------------------------------------------------
-    // Response signals — driven by slave, captured by driver
-    // --------------------------------------------------------
     logic                              PREADY;
     logic [`DATA_WIDTH-1:0]            PRDATA;
     logic                              PSLVERR;
 
-    // --------------------------------------------------------
-    // Factory & field registration
-    // --------------------------------------------------------
     `uvm_object_utils_begin(apb_master_trans)
         `uvm_field_int       (PWRITE,    UVM_ALL_ON | UVM_HEX)
         `uvm_field_int       (PADDR,     UVM_ALL_ON | UVM_HEX)
@@ -77,30 +59,14 @@ class apb_master_trans extends uvm_sequence_item;
         soft PADDR inside {[0 : (2**`ADDR_WIDTH)-1]};
     }
 
-    // // Transfer size and PWRITE must be solved before PSTRB is computed
-    // constraint c_solve_order {
-    //     solve PWRITE     before trans_size;
-    //     solve trans_size before PWDATA;
-    // }
-
-    // --------------------------------------------------------
-    // Constructor
-    // --------------------------------------------------------
     function new(string name = "apb_master_trans");
         super.new(name);
     endfunction
 
-    // --------------------------------------------------------
-    // post_randomize — called just after randomize()
-    // --------------------------------------------------------
     function void post_randomize();
         strobe_calc();   // compute PSTRB based on final PWRITE + trans_size values
     endfunction
 
-    // --------------------------------------------------------
-    // strobe_calc
-    // PSTRB depends on both transfer size AND direction
-    // --------------------------------------------------------
     function void strobe_calc();
 
         // reads — spec mandated [required by APB specification] — always zero
@@ -124,9 +90,6 @@ class apb_master_trans extends uvm_sequence_item;
 
     endfunction
 
-    // --------------------------------------------------------
-    // do_print override — cleaner [easier to read] transaction display
-    // --------------------------------------------------------
     function void do_print(uvm_printer printer);
         super.do_print(printer);
         printer.print_string ("Direction",  PWRITE ? "WRITE" : "READ");

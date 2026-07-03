@@ -2,7 +2,7 @@
 
 package apb_pkg;
 
-    int no_of_trans = 10;
+    int no_of_trans = 40;
 
     `include "../top/apb_defs.sv"
 
@@ -56,6 +56,7 @@ package apb_pkg;
     `include "../master_agent/apb_master_agent.sv"
     `include "../slave_agent/apb_slave_agent.sv"
     
+    `include "../env/apb_coverage.sv"
     `include "../env/apb_sb.sv"
     `include "../env/apb_env.sv"
     

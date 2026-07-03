@@ -5,26 +5,18 @@ class apb_env extends uvm_env;
 
     `uvm_component_utils(apb_env)
 
-    // --------------------------------------------------------
-    // Component handles
-    // --------------------------------------------------------
     apb_master_agent  agent_hm;
     apb_slave_agent   agent_hs[];
     apb_env_config    config_he;
+    apb_coverage cov_h;
     apb_sb            sb_h;
 
-    // --------------------------------------------------------
-    // Virtual interface handle — set from top/test
-    // --------------------------------------------------------
     virtual apb_inf vif;
 
     function new(string name = "apb_env", uvm_component parent);
         super.new(name, parent);
     endfunction
 
-    // ----------------------------------------------------------------
-    // build_phase
-    // ----------------------------------------------------------------
     function void build_phase(uvm_phase phase);
         super.build_phase(phase);
 
@@ -47,6 +39,7 @@ class apb_env extends uvm_env;
 
         //  Step 7 — create all components
         agent_hm = apb_master_agent::type_id::create("agent_hm", this);
+        cov_h = apb_coverage::type_id::create("cov_h", this);
         sb_h     = apb_sb::type_id::create("sb_h",     this);
 
         foreach(agent_hs[i]) begin
@@ -59,14 +52,12 @@ class apb_env extends uvm_env;
 
     endfunction
 
-    // ----------------------------------------------------------------
-    // connect_phase
-    // ----------------------------------------------------------------
     function void connect_phase(uvm_phase phase);
         super.connect_phase(phase);   //  was missing
 
         //  master monitor → scoreboard
         agent_hm.mon_hm.mas_mon_ap.connect(sb_h.mas_mon_fifo_h.analysis_export);
+        agent_hm.mon_hm.mas_mon_ap.connect(cov_h.analysis_export);
 
         //  ALL slave monitors → scoreboard — properly connected [not commented out]
         foreach(agent_hs[i])
@@ -76,10 +67,6 @@ class apb_env extends uvm_env;
 
     endfunction
 
-    // ----------------------------------------------------------------
-    // start_of_simulation_phase
-    // Size each slave monitor's wave-mirror array after all builds done
-    // ----------------------------------------------------------------
     function void start_of_simulation_phase(uvm_phase phase);
         super.start_of_simulation_phase(phase);
 
