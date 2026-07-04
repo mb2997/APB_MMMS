@@ -145,6 +145,15 @@ run-tc8:
 	    -do "coverage save -onexit results/tc8/tc8.ucdb; run -all; exit" \
 	    +UVM_TESTNAME=apb_max_pready_test
 
+run-tc9:
+	@if not exist results mkdir results
+	@if not exist results\tc9 mkdir results\tc9
+	vsim -vopt $(TBModule) -c \
+	    -sv_seed random \
+	    -coverage \
+	    -do "coverage save -onexit results/tc9/tc9.ucdb; run -all; exit" \
+	    +UVM_TESTNAME=apb_multi_slave_pwdata_corner_rw_test
+
 tc1: clean lib cmp run-tc1
 tc2: clean lib cmp run-tc2
 tc3: clean lib cmp run-tc3
@@ -153,6 +162,7 @@ tc5: clean lib cmp run-tc5
 tc6: clean lib cmp run-tc6
 tc7: clean lib cmp run-tc7
 tc8: clean lib cmp run-tc8
+tc9: clean lib cmp run-tc9
 
 # =============================================================================
 # Internal single-run workhorse [the target that does the actual heavy lifting]

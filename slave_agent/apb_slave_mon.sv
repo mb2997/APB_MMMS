@@ -89,6 +89,13 @@ class apb_slave_mon extends uvm_monitor;
         trans_hs.PREADY  = vif.slv_mon_cb.PREADY;
         trans_hs.PENABLE = vif.slv_mon_cb.PENABLE;
         trans_hs.PSTRB   = vif.slv_mon_cb.PSTRB;
+        
+        trans_hs.no_of_slaves = 0;
+        foreach(vif.slv_mon_cb.PSEL[i])
+        begin
+            if(!$isunknown(vif.slv_mon_cb.PSEL[i]))
+                trans_hs.no_of_slaves++;
+        end
 
         // Log and send to scoreboard
         if(trans_hs.PWRITE == 1'b1)

@@ -40,7 +40,9 @@ class apb_env extends uvm_env;
         //  Step 7 — create all components
         agent_hm = apb_master_agent::type_id::create("agent_hm", this);
         cov_h = apb_coverage::type_id::create("cov_h", this);
-        sb_h     = apb_sb::type_id::create("sb_h",     this);
+        sb_h = apb_sb::type_id::create("sb_h", this);
+
+        cov_h.slv_mon2_cov_af = new[config_he.no_of_slaves];
 
         foreach(agent_hs[i]) begin
             agent_hs[i] = apb_slave_agent::type_id::create($sformatf("agent_hs_%0d", i), this);
@@ -61,7 +63,10 @@ class apb_env extends uvm_env;
 
         //  ALL slave monitors → scoreboard — properly connected [not commented out]
         foreach(agent_hs[i])
+        begin
             agent_hs[i].mon_hs.slv_mon_ap.connect(sb_h.slv_mon_fifo_h[i].analysis_export);
+            agent_hs[i].mon_hs.slv_mon_ap.connect(cov_h.slv_mon2_cov_af[i].analysis_export);
+        end
 
         `uvm_info(get_type_name(), "Connect-Phase complete in ENV", UVM_MEDIUM)
 

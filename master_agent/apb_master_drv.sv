@@ -12,7 +12,6 @@ class apb_master_drv extends uvm_driver #(apb_master_trans);
     //Config handles
     apb_master_config config_hm;
     apb_env_config    config_he;
-    apb_master_trans  trans_hm;
 
     //State tracking
     state_e      transfer_state;
@@ -48,8 +47,6 @@ class apb_master_drv extends uvm_driver #(apb_master_trans);
 
         if(!uvm_config_db #(virtual apb_inf)::get(this, "", "apb_inf", vif))
             `uvm_fatal(get_type_name(), "Failed to get apb_inf. Have you set it?")
-
-        trans_hm = apb_master_trans::type_id::create("trans_hm");
 
         $display("------ Execution Done Build-Phase in Master Driver -------");
     endfunction

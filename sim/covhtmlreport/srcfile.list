@@ -2,6 +2,8 @@
 ../TEST//master_tc/apb_multi_slave_b2b_rw_test.sv
 ../TEST//master_tc/apb_multi_slave_min_max_mid_addr_seqs.sv
 ../TEST//master_tc/apb_multi_slave_min_max_mid_addr_test.sv
+../TEST//master_tc/apb_multi_slave_pwdata_corner_rw_seqs.sv
+../TEST//master_tc/apb_multi_slave_pwdata_corner_rw_test.sv
 ../TEST//master_tc/apb_multi_slave_rand_rw_seqs.sv
 ../TEST//master_tc/apb_multi_slave_rand_rw_test.sv
 ../TEST//master_tc/apb_multi_slave_raw_seqs.sv

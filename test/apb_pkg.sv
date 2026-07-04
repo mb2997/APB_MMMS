@@ -39,13 +39,9 @@ package apb_pkg;
     `include "/master_tc/apb_multi_slave_min_max_mid_addr_seqs.sv"
     `include "/master_tc/apb_multi_slave_raw_seqs.sv"
     `include "/master_tc/apb_multi_slave_b2b_rw_seqs.sv"
+    `include "/master_tc/apb_multi_slave_pwdata_corner_rw_seqs.sv"
     `include "/slave_tc/apb_min_pready_seqs.sv"
     `include "/slave_tc/apb_max_pready_seqs.sv"
-    // `include "apb_high_addr_range_seqs.sv"
-    // `include "apb_mid_reset_seqs.sv"
-    // `include "apb_pready_wait_timeout_seqs.sv"
-    // `include "apb_high_data_range_seqs.sv"
-    // `include "apb_low_data_range_seqs.sv"
     
     `include "../master_agent/apb_master_drv.sv"
     `include "../slave_agent/apb_slave_drv.sv"
@@ -69,13 +65,9 @@ package apb_pkg;
     `include "/master_tc/apb_multi_slave_min_max_mid_addr_test.sv"
     `include "/master_tc/apb_multi_slave_raw_test.sv"
     `include "/master_tc/apb_multi_slave_b2b_rw_test.sv"
+    `include "/master_tc/apb_multi_slave_pwdata_corner_rw_test.sv"
     `include "/slave_tc/apb_min_pready_test.sv"
     `include "/slave_tc/apb_max_pready_test.sv"
-    // `include "apb_high_addr_range_test.sv"
-    // `include "apb_mid_reset_test.sv"
-    // `include "apb_pready_wait_timeout_test.sv"
-    // `include "apb_high_data_range_test.sv"
-    // `include "apb_low_data_range_test.sv"
 
     function void get_vif_in_pkg();
         if(!uvm_config_db #(virtual apb_inf) :: get(null," ","apb_inf",vif))

@@ -3,41 +3,41 @@
 
 class apb_master_trans extends uvm_sequence_item;
 
-    static int                       current_trans_m = 1;
+    static int current_trans_m = 1;
 
-    rand bit                         PWRITE;
-    rand bit [`ADDR_WIDTH-1:0]      PADDR;
-    rand bit [`DATA_WIDTH-1:0]       PWDATA;
-    rand transfer_size_e             trans_size;
+    rand bit PWRITE;
+    rand bit [`ADDR_WIDTH-1:0] PADDR;
+    rand bit [`DATA_WIDTH-1:0] PWDATA;
+    rand transfer_size_e trans_size;
 
     rand bit PENABLE;
-    logic [`STRB_WIDTH-1:0]            PSTRB;
-    logic                              PSEL[];
+    logic [`STRB_WIDTH-1:0] PSTRB;
+    logic PSEL[];
 
-    logic                              PREADY;
-    logic [`DATA_WIDTH-1:0]            PRDATA;
-    logic                              PSLVERR;
+    logic PREADY;
+    logic [`DATA_WIDTH-1:0] PRDATA;
+    logic PSLVERR;
 
     `uvm_object_utils_begin(apb_master_trans)
-        `uvm_field_int       (PWRITE,    UVM_ALL_ON | UVM_HEX)
-        `uvm_field_int       (PADDR,     UVM_ALL_ON | UVM_HEX)
-        `uvm_field_int       (PWDATA,    UVM_ALL_ON | UVM_HEX)
-        `uvm_field_int       (PSTRB,     UVM_ALL_ON | UVM_HEX)
-        `uvm_field_int       (PENABLE,   UVM_ALL_ON | UVM_HEX)
-        `uvm_field_array_int (PSEL,      UVM_ALL_ON | UVM_HEX)
-        `uvm_field_enum      (transfer_size_e, trans_size, UVM_ALL_ON)
-        `uvm_field_int       (PREADY,    UVM_ALL_ON | UVM_HEX)
-        `uvm_field_int       (PRDATA,    UVM_ALL_ON | UVM_HEX)
-        `uvm_field_int       (PSLVERR,   UVM_ALL_ON | UVM_HEX)
+        `uvm_field_int (PWRITE, UVM_ALL_ON | UVM_HEX)
+        `uvm_field_int (PADDR,  UVM_ALL_ON | UVM_HEX)
+        `uvm_field_int (PWDATA, UVM_ALL_ON | UVM_HEX)
+        `uvm_field_int (PSTRB,  UVM_ALL_ON | UVM_HEX)
+        `uvm_field_int (PENABLE, UVM_ALL_ON | UVM_HEX)
+        `uvm_field_array_int (PSEL, UVM_ALL_ON | UVM_HEX)
+        `uvm_field_enum (transfer_size_e, trans_size, UVM_ALL_ON)
+        `uvm_field_int (PREADY,  UVM_ALL_ON | UVM_HEX)
+        `uvm_field_int (PRDATA,  UVM_ALL_ON | UVM_HEX)
+        `uvm_field_int (PSLVERR, UVM_ALL_ON | UVM_HEX)
     `uvm_object_utils_end
 
     // Transfer size distribution — WORD weighted [favored] heavily
     constraint c_trans_size {
         trans_size dist {
-            WORD     := 70,
-            HALFWORD := 20,
-            BYTE     := 10
-        };
+            WORD     := 33,
+            HALFWORD := 33,
+            BYTE     := 33
+        }; trans_size != EMPTY;
     }
 
     // Read/write distribution
@@ -68,7 +68,6 @@ class apb_master_trans extends uvm_sequence_item;
     endfunction
 
     function void strobe_calc();
-
         // reads — spec mandated [required by APB specification] — always zero
         if(PWRITE == 1'b0) begin
             PSTRB = '0;
@@ -87,7 +86,6 @@ class apb_master_trans extends uvm_sequence_item;
                                trans_size.name()))
             end
         endcase
-
     endfunction
 
     function void do_print(uvm_printer printer);

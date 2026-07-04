@@ -11,8 +11,6 @@ class apb_slave_agent extends uvm_agent;
     apb_slave_mon    mon_hs;
     apb_slave_config config_hs;   //  single config — not config_hs[]
 
-    //  vif removed — children fetch their own via config_db
-
     function new(string name = "apb_slave_agent", uvm_component parent = null);
         super.new(name, parent);
     endfunction

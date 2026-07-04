@@ -15,6 +15,9 @@ class apb_slave_trans extends uvm_sequence_item;
     logic PSLVERR;   //  added — slave error response
     logic PSEL[];    //  added — which slave selected
 
+    transfer_size_e trans_size;
+    static int no_of_slaves;
+
     rand int unsigned no_of_wait_cycles;   // how many cycles PREADY stays low
     rand logic wait_enable;         // 0=respond immediately, 1=insert waits
 

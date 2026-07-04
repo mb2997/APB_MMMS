@@ -6,9 +6,10 @@
 `define CYCLE 20
 
 typedef enum bit [1:0] {
-    BYTE      = 2'b00,   // 8-bit  transfer — 1 byte valid
-    HALFWORD  = 2'b01,   // 16-bit transfer — 2 bytes valid
-    WORD      = 2'b10    // 32-bit transfer — all 4 bytes valid
+    EMPTY      = 2'b00,
+    BYTE      = 2'b01,   // 8-bit  transfer — 1 byte valid
+    HALFWORD  = 2'b10,   // 16-bit transfer — 2 bytes valid
+    WORD      = 2'b11    // 32-bit transfer — all 4 bytes valid
 } transfer_size_e;
 
 typedef enum bit [1:0] {IDLE,SETUP,ACCESS} state_e;
