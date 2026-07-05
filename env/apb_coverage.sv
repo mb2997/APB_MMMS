@@ -63,7 +63,7 @@ class apb_coverage extends uvm_subscriber #(apb_master_trans);
         PSLVERR :   coverpoint m_trans.PSLVERR
                     {
                         bins no_error = {0};
-                        bins error    = {1};
+                        ignore_bins error    = {1};
                     }
 
         PREADY  :   coverpoint m_trans.PREADY

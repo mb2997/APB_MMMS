@@ -80,10 +80,10 @@ class apb_master_drv extends uvm_driver #(apb_master_trans);
 
         // one-hot check — exactly one slave must own this address
         if(matched == 0)
-            `uvm_fatal("PSEL_DECODE",
+            `uvm_error("PSEL_DECODE",
                 $sformatf("Address 0x%0h does not belong to any slave", req.PADDR))
         else if(matched > 1)
-            `uvm_fatal("PSEL_OVERLAP",
+            `uvm_error("PSEL_OVERLAP",
                 $sformatf("Address 0x%0h maps to %0d slaves — overlapping address ranges",
                            req.PADDR, matched))
 

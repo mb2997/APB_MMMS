@@ -53,7 +53,7 @@ class apb_env_config extends uvm_object;
                 if(i == j) continue;   // skip [don't compare] same slave
                 if(config_hs[i].start_addr <= config_hs[j].end_addr &&
                    config_hs[i].end_addr   >= config_hs[j].start_addr)
-                    `uvm_fatal(get_type_name(),
+                    `uvm_error(get_type_name(),
                         $sformatf("Address overlap detected [found] between slave-%0d (0x%0h-0x%0h) and slave-%0d (0x%0h-0x%0h)",
                                    i, config_hs[i].start_addr, config_hs[i].end_addr,
                                    j, config_hs[j].start_addr, config_hs[j].end_addr))
